@@ -1236,20 +1236,17 @@ nav::after {
 .accred-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border2);
+  gap: 16px;
 }
 .accred-card {
   background: var(--bg2);
-  padding: 32px 28px;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: background .2s;
-  position: relative;
+  border: 1px solid var(--border2);
   overflow: hidden;
+  transition: border-color .25s, transform .25s;
+  position: relative;
 }
-.accred-card:hover { background: rgba(0,212,255,.04); }
+.accred-card:hover { border-color: var(--border); transform: translateY(-3px); }
+/* Neon left-edge glow on hover */
 .accred-card::before {
   content: '';
   position: absolute;
@@ -1260,16 +1257,42 @@ nav::after {
   transition: opacity .3s;
 }
 .accred-card:hover::before { opacity: 1; }
-.accred-icon {
-  width: 44px; height: 44px;
-  border: 1px solid var(--border);
-  background: rgba(0,212,255,.05);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+
+/* Logo display area */
+.accred-logo {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border2);
+  transition: border-color .25s;
 }
-.accred-icon svg { width: 22px; height: 22px; fill: var(--cyan); }
+.accred-card:hover .accred-logo { border-color: var(--border); }
+/* White-background logos sit in a white box — certificate aesthetic */
+.accred-logo.on-white {
+  background: rgba(255,255,255,0.92);
+}
+/* Dark-background logos blend naturally */
+.accred-logo.on-dark {
+  background: #000;
+}
+.accred-logo img {
+  max-height: 72px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+.accred-info { padding: 20px 22px; }
 .accred-name { font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700; color: #e2f4ff; margin-bottom: 8px; letter-spacing: .5px; }
 .accred-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .accred-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .accred-grid { grid-template-columns: 1fr; }
+}
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT
@@ -2142,48 +2165,60 @@ footer {
     <div class="accred-grid">
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
-        <div>
+        <div class="accred-logo on-white">
+          <img src="assets/logos/hcp.jpg" alt="Human Capital Partnership — Employment Agency" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">Human Capital Partnership</div>
-          <p class="accred-desc">Awarded by MOM, National Trades Union Congress, and Singapore National Employers Federation.</p>
+          <p class="accred-desc">Awarded by the Ministry of Manpower, National Trades Union Congress, and Singapore National Employers Federation.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-        <div>
+        <div class="accred-logo on-white">
+          <img src="assets/logos/iso.jpg" alt="ISO 9001:2015 Certified" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">ISO 9001:2015 Certified</div>
           <p class="accred-desc">Quality management principles — strong customer focus, top management commitment, and continual improvement.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-        <div>
+        <div class="accred-logo on-white">
+          <img src="assets/logos/dptm.jpg" alt="Data Protection Trustmark — Data Protection Assured" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">Data Protection Trustmark</div>
           <p class="accred-desc">DPTM demonstrates PDPA compliance — signalling sound data governance to clients and partners.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg></div>
-        <div>
+        <div class="accred-logo on-dark">
+          <img src="assets/logos/cybersafe.png" alt="SG Cyber Safe — Cyber Essentials Mark" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">SG Cyber Safe</div>
           <p class="accred-desc">Cyber Essentials Mark — good cyber hygiene practices that safeguard systems and customer data.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c4 0 4-2 8-2s4 2 8 2v-2c-4 0-4-2-8-2-1.26 0-2.01.3-2.87.5C14.91 11.2 17.35 9.2 21 9V7c-1.5 0-2.89.28-4 .72V8z"/></svg></div>
-        <div>
+        <div class="accred-logo on-white">
+          <img src="assets/logos/cplc.jpg" alt="Carbon Pricing Leadership Coalition Singapore" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">Carbon Pricing Leadership</div>
           <p class="accred-desc">Member of CPLC Singapore — the decarbonisation arm of the Global Compact Network Singapore.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
-        <div>
+        <div class="accred-logo on-white">
+          <img src="assets/logos/ecovadis.jpg" alt="EcoVadis Bronze Sustainability Rating" />
+        </div>
+        <div class="accred-info">
           <div class="accred-name">EcoVadis Bronze</div>
           <p class="accred-desc">World's most trusted sustainability rating — Bronze awarded, with continued improvement targets.</p>
         </div>
