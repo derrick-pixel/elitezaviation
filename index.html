@@ -1295,6 +1295,386 @@ nav::after {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   JOURNEY MAP
+═══════════════════════════════════════════════════════════ */
+#journey {
+  background: var(--bg);
+  padding: 100px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+/* deep-space gradient behind the whole section */
+#journey::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(60,20,0,.35) 0%,
+    rgba(20,10,40,.2) 40%,
+    rgba(0,5,20,.0) 100%
+  );
+  pointer-events: none;
+}
+
+.journey-header { text-align: center; margin-bottom: 72px; }
+.journey-header .body-text { margin: 0 auto; text-align: center; }
+
+/* ── Status board (top) ── */
+.launch-board {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border2);
+  background: rgba(0,212,255,.02);
+  margin-bottom: 80px;
+  overflow: hidden;
+  position: relative;
+}
+.launch-board::before {
+  content: 'MISSION STATUS // CLIENT LAUNCH SEQUENCE';
+  position: absolute;
+  top: -1px; left: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  background: var(--bg);
+  padding: 0 8px;
+  opacity: .55;
+}
+.board-stage {
+  flex: 1;
+  padding: 16px 10px 14px;
+  text-align: center;
+  border-right: 1px solid var(--border2);
+  position: relative;
+  transition: background .2s;
+}
+.board-stage:last-child { border-right: none; }
+.board-stage:hover { background: rgba(0,212,255,.04); }
+.board-t {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+.board-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: #e2f4ff;
+  line-height: 1.3;
+}
+.board-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin: 8px auto 0;
+}
+
+/* ── Timeline ── */
+.journey-timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+/* Central trajectory line */
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to top,
+    #ff4500 0%,
+    #ff8c00 10%,
+    #ffd700 22%,
+    #00c8ff 55%,
+    #7c2fff 80%,
+    rgba(124,47,255,.0) 100%
+  );
+  z-index: 1;
+}
+
+.journey-step {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* Left card (odd steps) */
+.step-card-left {
+  padding-right: 32px;
+  text-align: right;
+}
+/* Right card (even steps) */
+.step-card-right {
+  padding-left: 32px;
+  text-align: left;
+}
+.step-empty { /* spacer */ }
+
+.step-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  padding: 22px 24px;
+  position: relative;
+  transition: border-color .25s, background .25s;
+}
+.step-card:hover { border-color: var(--border); background: rgba(0,212,255,.03); }
+
+/* Arrow connector pointing to center node */
+.step-card-left .step-card::after {
+  content: '';
+  position: absolute;
+  top: 50%; right: -9px;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-left-color: var(--border2);
+}
+.step-card-left .step-card:hover::after { border-left-color: var(--border); }
+.step-card-right .step-card::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: -9px;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-right-color: var(--border2);
+}
+.step-card-right .step-card:hover::before { border-right-color: var(--border); }
+
+/* Central node */
+.step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+.step-bubble {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  background: var(--bg);
+  position: relative;
+}
+/* Outer pulse ring */
+.step-bubble::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid;
+  opacity: .3;
+  animation: nodePulse 3s ease-in-out infinite;
+}
+@keyframes nodePulse {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50%       { opacity: .08; transform: scale(1.2); }
+}
+.step-t {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Step card typography */
+.step-phase {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.step-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: .5px;
+  line-height: 1.3;
+}
+.step-desc {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 9px;
+  border: 1px solid;
+  margin-top: 10px;
+}
+
+/* ── Stage colour tokens ── */
+/* 1: orange launch */ .s1 { --sc: #ff6b35; }
+/* 2: amber         */ .s2 { --sc: #ff9f1c; }
+/* 3: gold          */ .s3 { --sc: #ffd700; }
+/* 4: lime          */ .s4 { --sc: #7aff72; }
+/* 5: teal          */ .s5 { --sc: #00e5cc; }
+/* 6: cyan          */ .s6 { --sc: #00d4ff; }
+/* 7: blue-violet   */ .s7 { --sc: #7c83ff; }
+/* 8: orbit violet  */ .s8 { --sc: #c084fc; }
+
+.step-phase  { color: var(--sc); }
+.step-badge  { color: var(--sc); border-color: color-mix(in srgb, var(--sc) 30%, transparent); background: color-mix(in srgb, var(--sc) 8%, transparent); }
+.step-bubble { border-color: var(--sc); box-shadow: 0 0 16px color-mix(in srgb, var(--sc) 30%, transparent), inset 0 0 12px color-mix(in srgb, var(--sc) 10%, transparent); color: var(--sc); }
+.step-bubble::before { border-color: var(--sc); }
+.step-t      { color: color-mix(in srgb, var(--sc) 60%, transparent); }
+.board-dot   { background: var(--sc, var(--cyan)); box-shadow: 0 0 6px var(--sc, var(--cyan)); }
+.board-t     { color: var(--sc, var(--cyan)); }
+
+/* ── Orbit Finale ── */
+.journey-finale {
+  max-width: 960px;
+  margin: 48px auto 0;
+  background: linear-gradient(135deg, rgba(192,132,252,.06), rgba(0,212,255,.04));
+  border: 1px solid rgba(192,132,252,.3);
+  padding: 48px 48px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.journey-finale::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,132,252,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* Orbit rings */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(192,132,252,.12);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.orbit-ring-1 { width: 200px; height: 200px; }
+.orbit-ring-2 { width: 360px; height: 360px; animation: orbitSpin 20s linear infinite; }
+.orbit-ring-3 { width: 520px; height: 520px; animation: orbitSpin 35s linear infinite reverse; }
+/* Satellite dot on ring 2 */
+.orbit-ring-2::after {
+  content: '◆';
+  position: absolute;
+  top: -5px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: #c084fc;
+  text-shadow: 0 0 8px #c084fc;
+}
+@keyframes orbitSpin {
+  from { transform: translate(-50%,-50%) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg); }
+}
+.finale-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c084fc;
+  margin-bottom: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.finale-status::before, .finale-status::after {
+  content: '';
+  height: 1px; width: 48px;
+  background: linear-gradient(90deg, transparent, #c084fc);
+}
+.finale-status::after { background: linear-gradient(270deg, transparent, #c084fc); }
+.finale-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(22px, 4vw, 40px);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(192,132,252,.5);
+  margin-bottom: 14px;
+  position: relative;
+}
+.finale-sub {
+  font-size: 14px;
+  color: rgba(180,220,255,.6);
+  max-width: 560px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+  position: relative;
+}
+.finale-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border: 1px solid rgba(192,132,252,.2);
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.finale-metric {
+  flex: 1;
+  padding: 16px 12px;
+  border-right: 1px solid rgba(192,132,252,.2);
+}
+.finale-metric:last-child { border-right: none; }
+.finale-metric-val {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  font-weight: 800;
+  color: #c084fc;
+  text-shadow: 0 0 12px rgba(192,132,252,.4);
+}
+.finale-metric-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(180,220,255,.4);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .launch-board { flex-wrap: wrap; }
+  .board-stage { min-width: 33.33%; border-bottom: 1px solid var(--border2); }
+  .journey-timeline::before { left: 28px; }
+  .journey-step { grid-template-columns: 56px 1fr; grid-template-rows: auto; }
+  .step-card-left { display: none; }
+  .step-empty { display: none; }
+  .step-node { flex-direction: row; justify-content: flex-start; }
+  .step-bubble { width: 44px; height: 44px; flex-shrink: 0; }
+  .step-card-right { padding-left: 16px; }
+  .step-card-right .step-card::before { display: none; }
+  .journey-finale { padding: 36px 24px; }
+  .finale-metrics { flex-direction: column; max-width: 260px; }
+  .finale-metric { border-right: none; border-bottom: 1px solid rgba(192,132,252,.2); }
+  .finale-metric:last-child { border-bottom: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    CONTACT
 ═══════════════════════════════════════════════════════════ */
 #contact { background: var(--bg2); }
@@ -1458,6 +1838,7 @@ footer {
       <li><a href="#services">Services</a></li>
       <li><a href="#flow">Process</a></li>
       <li><a href="#why">Why Us</a></li>
+      <li><a href="#journey">Journey</a></li>
       <li><a href="#accreditation">Credentials</a></li>
       <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
@@ -1979,6 +2360,187 @@ footer {
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNEY MAP ═══════════════════════════════════════════════ -->
+<section id="journey">
+  <div class="container">
+
+    <div class="journey-header">
+      <div class="label" style="justify-content:center;">Client Experience</div>
+      <h2 class="heading" style="text-align:center;">YOUR <span class="hi">LAUNCH SEQUENCE</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">
+        Every great mission begins with a plan. Here is exactly what working with Elitez Aviation feels like — from the moment you make contact to the day your crew achieves orbit.
+      </p>
+    </div>
+
+    <!-- Mission status board -->
+    <div class="launch-board">
+      <div class="board-stage s1"> <div class="board-t">T−60</div> <div class="board-name">SIGNAL<br/>SENT</div> <div class="board-dot" style="--sc:#ff6b35;"></div> </div>
+      <div class="board-stage s2"> <div class="board-t">T−45</div> <div class="board-name">MISSION<br/>BRIEF</div> <div class="board-dot" style="--sc:#ff9f1c;"></div> </div>
+      <div class="board-stage s3"> <div class="board-t">T−30</div> <div class="board-name">CREW<br/>SEARCH</div> <div class="board-dot" style="--sc:#ffd700;"></div> </div>
+      <div class="board-stage s4"> <div class="board-t">T−14</div> <div class="board-name">PRE-FLIGHT<br/>CHECK</div> <div class="board-dot" style="--sc:#7aff72;"></div> </div>
+      <div class="board-stage s5"> <div class="board-t">T−7</div>  <div class="board-name">SIMULATION<br/>DRILL</div> <div class="board-dot" style="--sc:#00e5cc;"></div> </div>
+      <div class="board-stage s6"> <div class="board-t">T−0</div>  <div class="board-name">IGNITION<br/>GO/NO-GO</div> <div class="board-dot" style="--sc:#00d4ff;"></div> </div>
+      <div class="board-stage s7"> <div class="board-t">T+7</div>  <div class="board-name">LIFTOFF<br/>CONFIRMED</div> <div class="board-dot" style="--sc:#7c83ff;"></div> </div>
+      <div class="board-stage s8"> <div class="board-t">T+∞</div>  <div class="board-name">ORBIT<br/>ACHIEVED</div> <div class="board-dot" style="--sc:#c084fc;"></div> </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="journey-timeline">
+
+      <!-- Step 1 -->
+      <div class="journey-step s1">
+        <div class="step-card-left">
+          <div class="step-card">
+            <div class="step-phase">Signal Sent</div>
+            <div class="step-title">You Fire the First Signal</div>
+            <p class="step-desc">You reach out — a call, an email, a form submission. Within 24 hours our team responds, mission clock starts ticking. No voicemail black holes here.</p>
+            <div class="step-badge">Response within 24h</div>
+          </div>
+        </div>
+        <div class="step-node">
+          <div class="step-bubble">T−60</div>
+          <div class="step-t">CONTACT</div>
+        </div>
+        <div class="step-empty"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="journey-step s2">
+        <div class="step-empty"></div>
+        <div class="step-node">
+          <div class="step-bubble">T−45</div>
+          <div class="step-t">BRIEF</div>
+        </div>
+        <div class="step-card-right">
+          <div class="step-card">
+            <div class="step-phase">Mission Brief</div>
+            <div class="step-title">We Download Your Mission Parameters</div>
+            <p class="step-desc">A deep-dive into your operational requirements, culture, certifications needed, and headcount targets. We don't guess — we listen, then plan with precision.</p>
+            <div class="step-badge">Dedicated consultant assigned</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="journey-step s3">
+        <div class="step-card-left">
+          <div class="step-card">
+            <div class="step-phase">Crew Search</div>
+            <div class="step-title">Engines Ignite. Search Begins.</div>
+            <p class="step-desc">We activate our 5,000+ aviation talent network across 6 source markets — Philippines, India, Malaysia, Myanmar, and beyond. Candidates surface fast.</p>
+            <div class="step-badge">5,000+ network activated</div>
+          </div>
+        </div>
+        <div class="step-node">
+          <div class="step-bubble">T−30</div>
+          <div class="step-t">SOURCE</div>
+        </div>
+        <div class="step-empty"></div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="journey-step s4">
+        <div class="step-empty"></div>
+        <div class="step-node">
+          <div class="step-bubble">T−14</div>
+          <div class="step-t">SCREEN</div>
+        </div>
+        <div class="step-card-right">
+          <div class="step-card">
+            <div class="step-phase">Pre-Flight Check</div>
+            <div class="step-title">Every Candidate is Flight-Checked</div>
+            <p class="step-desc">Multi-layer screening: qualifications verified, FAA/EASA certifications confirmed, experience assessed by our in-house technical consultant. Only the elite advance.</p>
+            <div class="step-badge">First CVs delivered ≤ 1 week</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="journey-step s5">
+        <div class="step-card-left">
+          <div class="step-card">
+            <div class="step-phase">Simulation Drill</div>
+            <div class="step-title">You Meet the Crew. They Prove Themselves.</div>
+            <p class="step-desc">We facilitate structured interviews and on-site or remote skill trade tests. Real conditions, real tasks — so there are zero surprises when boots hit the tarmac.</p>
+            <div class="step-badge">Skill trade tests on-site or remote</div>
+          </div>
+        </div>
+        <div class="step-node">
+          <div class="step-bubble">T−7</div>
+          <div class="step-t">ASSESS</div>
+        </div>
+        <div class="step-empty"></div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="journey-step s6">
+        <div class="step-empty"></div>
+        <div class="step-node">
+          <div class="step-bubble">T−0</div>
+          <div class="step-t">IGNITION</div>
+        </div>
+        <div class="step-card-right">
+          <div class="step-card">
+            <div class="step-phase">Ignition — Go / No-Go</div>
+            <div class="step-title">All Systems Green. Offer Extended.</div>
+            <p class="step-desc">GO/NO-GO poll complete across all stations. Offer issued, contracts signed, IPA applications filed. The countdown clock hits zero. Hold your breath.</p>
+            <div class="step-badge">Contracts &amp; IPA processing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="journey-step s7">
+        <div class="step-card-left">
+          <div class="step-card">
+            <div class="step-phase">Liftoff Confirmed</div>
+            <div class="step-title">Your New Crew Reports for Duty. 🚀</div>
+            <p class="step-desc">Day one. Your technician arrives on-site. Accommodation secured, medical sorted, work pass in hand. Our dedicated Welfare Manager monitors the ascent in real time.</p>
+            <div class="step-badge">Welfare Manager on standby</div>
+          </div>
+        </div>
+        <div class="step-node">
+          <div class="step-bubble">T+7</div>
+          <div class="step-t">LIFTOFF</div>
+        </div>
+        <div class="step-empty"></div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <!-- Orbit Finale -->
+    <div class="journey-finale">
+      <div class="orbit-ring orbit-ring-1"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="orbit-ring orbit-ring-3"></div>
+      <div class="finale-status">Orbit Achieved</div>
+      <div class="finale-title">STABLE ORBIT. MISSION SUSTAINED.</div>
+      <p class="finale-sub">
+        Your workforce is deployed, performing, and retained. Ongoing HR support, payroll management, and our retention programme keep operations smooth — so you can focus on the mission, not the mechanics.
+      </p>
+      <div class="finale-metrics">
+        <div class="finale-metric">
+          <div class="finale-metric-val">≤ 8 wks</div>
+          <div class="finale-metric-label">Full Headcount</div>
+        </div>
+        <div class="finale-metric">
+          <div class="finale-metric-val">≤ 1 wk</div>
+          <div class="finale-metric-label">First CV Delivered</div>
+        </div>
+        <div class="finale-metric">
+          <div class="finale-metric-val">24/7</div>
+          <div class="finale-metric-label">Welfare Support</div>
+        </div>
+        <div class="finale-metric">
+          <div class="finale-metric-val">T+∞</div>
+          <div class="finale-metric-label">Ongoing Partnership</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
