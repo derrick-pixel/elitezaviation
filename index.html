@@ -1819,6 +1819,72 @@ footer {
   .hud-stat:last-child { border-bottom: none; }
   .footer-top { flex-direction: column; }
 }
+
+/* ── Role Scope Modal ───────────────────────────────────── */
+.role-chip { cursor: pointer; }
+.role-chip:hover { background: rgba(0,212,255,.18); color: #fff; border-color: var(--cyan); transform: translateY(-1px); }
+
+#role-modal-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(2,6,18,.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  padding: 1rem;
+}
+#role-modal-backdrop.open { display: flex; }
+#role-modal {
+  background: rgba(10,20,40,.96);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  max-width: 640px; width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 60px rgba(0,212,255,.12), 0 0 0 1px rgba(0,212,255,.08);
+}
+#role-modal::before, #role-modal::after {
+  content: ''; position: absolute; width: 14px; height: 14px;
+  border-color: var(--cyan); border-style: solid;
+}
+#role-modal::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+#role-modal::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.role-modal-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+}
+.role-modal-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: .65rem; letter-spacing: .12em; color: var(--cyan);
+  text-transform: uppercase; margin-bottom: .4rem;
+}
+.role-modal-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.15rem; font-weight: 700; color: #fff; line-height: 1.2;
+}
+.role-modal-close {
+  background: none; border: 1px solid var(--border); color: var(--cyan);
+  width: 32px; height: 32px; border-radius: 2px; cursor: pointer;
+  font-size: 1rem; line-height: 1; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.role-modal-close:hover { background: rgba(0,212,255,.1); }
+.role-modal-body { padding: 1.25rem 1.5rem 1.75rem; }
+.role-modal-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: .85rem;
+}
+.role-modal-body li {
+  padding-left: 1.2rem; position: relative;
+  font-size: .875rem; line-height: 1.65; color: var(--text2);
+}
+.role-modal-body li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: var(--cyan); font-size: .7rem; top: .2rem;
+}
   </style>
 </head>
 <body>
@@ -2212,22 +2278,23 @@ footer {
         <div class="label">Specialisation</div>
         <h2 class="heading">DEEP AVIATION<br/><span class="hi">INTELLIGENCE</span></h2>
         <p class="body-text">Our team operates at the intersection of aerospace engineering and human capital strategy — covering every technical discipline from airframe to avionics.</p>
+        <p class="body-text" style="font-size:.78rem;color:var(--cyan);margin-top:-.5rem;margin-bottom:.75rem;opacity:.8;">Tap any role to view full job scope</p>
         <div class="roles-grid">
-          <div class="role-chip">A&amp;C</div>
-          <div class="role-chip">Cabin</div>
-          <div class="role-chip">Avionics</div>
-          <div class="role-chip">Composite</div>
-          <div class="role-chip">Aircraft Planner</div>
-          <div class="role-chip">Sheetmetal</div>
-          <div class="role-chip">NDT Inspector</div>
-          <div class="role-chip">QC Inspector</div>
-          <div class="role-chip">CNC Machinist</div>
-          <div class="role-chip">Storekeeper</div>
-          <div class="role-chip">General Operator</div>
-          <div class="role-chip">Aircraft Cleaner</div>
-          <div class="role-chip">QA Inspector</div>
-          <div class="role-chip">Aircraft Painter</div>
-          <div class="role-chip">Aerospace Welder</div>
+          <div class="role-chip" data-role="ac">A&amp;C</div>
+          <div class="role-chip" data-role="cabin">Cabin</div>
+          <div class="role-chip" data-role="avionics">Avionics</div>
+          <div class="role-chip" data-role="composite">Composite</div>
+          <div class="role-chip" data-role="planner">Aircraft Planner</div>
+          <div class="role-chip" data-role="sheetmetal">Sheetmetal</div>
+          <div class="role-chip" data-role="ndt">NDT Inspector</div>
+          <div class="role-chip" data-role="qc">QC Inspector</div>
+          <div class="role-chip" data-role="cnc">CNC Machinist</div>
+          <div class="role-chip" data-role="stores">Storekeeper</div>
+          <div class="role-chip" data-role="operator">General Operator</div>
+          <div class="role-chip" data-role="cleaner">Aircraft Cleaner</div>
+          <div class="role-chip" data-role="qa">QA Inspector</div>
+          <div class="role-chip" data-role="painter">Aircraft Painter</div>
+          <div class="role-chip" data-role="welder">Aerospace Welder</div>
         </div>
       </div>
       <div class="expertise-table-wrap">
@@ -3033,6 +3100,236 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === '#' + curr ? 'var(--cyan)' : '';
   });
 }, { passive: true });
+</script>
+
+<!-- ═══ ROLE SCOPE MODAL ═══════════════════════════════════ -->
+<div id="role-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="role-modal-title-text">
+  <div id="role-modal">
+    <div class="role-modal-header">
+      <div>
+        <div class="role-modal-tag">// Role Profile</div>
+        <div class="role-modal-title" id="role-modal-title-text"></div>
+      </div>
+      <button class="role-modal-close" id="role-modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="role-modal-body">
+      <ul id="role-modal-list"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Role Scope Data ────────────────────────────────────── */
+const ROLE_DATA = {
+  ac: {
+    title: 'A&C Technician (Airframe & Component)',
+    scope: [
+      'Perform C-check and D-check heavy maintenance operations on commercial wide-body aircraft (Boeing and Airbus platforms), including structural inspections, fluid system servicing, and defect rectification.',
+      'Inspect airframe structures — wings, fuselage, rigging systems, hydraulic units, fuel systems, and seals — for cracks, leaks, corrosion, foreign object damage, warping, and wear.',
+      'Read and apply maintenance manuals, Illustrated Parts Catalogues (IPCs), service bulletins, and Airworthiness Directives to plan and execute approved repair schemes.',
+      'Operate specialised tooling and test equipment to carry out functional tests, system checks, and post-repair verification.',
+      'Maintain detailed records of all inspections, repairs, parts ordered, and maintenance procedures in the aircraft technical log.',
+      'Adhere to CAAS, EASA, and/or FAA regulatory requirements; coordinate technical status updates with licensed engineers and supervisors.',
+      'Manage tool accountability and equipment serviceability standards; report unserviceable tooling promptly to maintain hangar safety.'
+    ]
+  },
+  cabin: {
+    title: 'Cabin Technician (Aircraft Interior)',
+    scope: [
+      'Carry out inspection, repair, and replacement of passenger and crew seats, galleys, lavatories, overhead bins, sidewall panels, dado panels, and cabin door assemblies on wide-body aircraft.',
+      'Remove and reinstall cabin-related aircraft parts in accordance with the Aircraft Maintenance Manual (AMM) and applicable OEM documentation.',
+      'Support cabin configuration changes and cabin modification or retrofitting projects as directed by engineering.',
+      'Perform functional and aesthetic inspections of cabin interior components; document defects, raise discrepancy reports, and carry out troubleshooting.',
+      'Monitor and control spare parts and consumables inventory for cabin maintenance tasks; coordinate with stores for material requirements.',
+      'Maintain technical documentation and job cards for all repair work completed; ensure compliance with airworthiness standards.',
+      'Observe all safety protocols and housekeeping standards within the hangar; work rotating shifts including nights, weekends, and public holidays.'
+    ]
+  },
+  avionics: {
+    title: 'Avionics Technician',
+    scope: [
+      'Inspect, test, and troubleshoot avionics systems including radar, navigation systems, communication equipment, flight management systems, and autopilot systems using specialised diagnostic tools and software.',
+      'Conduct repairs, replacements, and adjustments to aircraft electronic systems; install new electronic equipment and avionics upgrades.',
+      'Carry out avionics modifications including new wiring installations, harness fabrication, and connector terminations per Wiring Manual and STC documentation.',
+      'Calibrate, test, and adjust avionics instruments and sensors; perform software updates and verify correct system functionality post-installation.',
+      'Inspect and repair aircraft wiring; monitor and maintain the integrity of the aircraft's electrical power supply and bonding systems.',
+      'Log all diagnostic tests, repairs, installations, and inspections accurately on job cards and electronic maintenance management systems; follow CAAS, FAA, and EASA guidelines.',
+      'Hold or be working towards a CAAS Aircraft Maintenance Certificate (AMC); experience across aircraft types such as B737, A320, ATR, or E190 is advantageous.'
+    ]
+  },
+  composite: {
+    title: 'Composite Technician',
+    scope: [
+      'Perform taper sanding, wet lay-up repairs, and pre-preg composite repairs on aircraft structural and non-structural composite components including radomes, fairings, cowlings, and control surface panels.',
+      'Read and execute repairs in strict accordance with the Structural Repair Manual (SRM), OEM component repair manuals, and approved repair schemes.',
+      'Conduct hot-bond repairs using heat blankets and vacuum bagging equipment; monitor cure cycles and record process parameters throughout.',
+      'Inspect completed repair areas for voids, delamination, and surface irregularities; carry out surface finishing prior to paint preparation.',
+      'Maintain a clean, hazard-free work environment in compliance with chemical handling and COSHH requirements; correctly store and dispose of resin systems and adhesives.',
+      'Work at heights using approved access equipment; comply with all Working at Heights (WAH) regulations and site safety requirements.',
+      'Minimum 3 years of composite repair experience in an aviation or aerospace MRO environment; rotating shift work required.'
+    ]
+  },
+  planner: {
+    title: 'Aircraft Planner (MRO Planning)',
+    scope: [
+      'Prepare work packages for scheduled aircraft checks (A-check through D-check) and aircraft modification and inspection programmes, ensuring all tasks, job cards, and engineering orders are compiled and issued on time.',
+      'Plan, monitor, and coordinate the timely arrival of aircraft spare parts, components, and consumables; arrange component loans or exchanges to avoid maintenance delays.',
+      'Create and update maintenance plans to meet airworthiness compliance requirements; verify that planned work meets contractual, regulatory, and technical specifications.',
+      'Liaise with customers, engineering, warehousing, and procurement teams to ensure all tools, equipment, and documentation required for planned maintenance tasks are in place before check commencement.',
+      'Analyse aircraft MRO work-related data, track work progress against the check plan, and generate reports for management and customers on schedule performance.',
+      'Maintain aircraft configuration database records, implement modification embodiment tracking, and ensure customer aircraft records are current and accurate.',
+      'Proficiency in ERP/SAP systems and Microsoft Excel required; a Diploma or Degree in Aeronautical, Aerospace, or Mechanical Engineering is typically expected.'
+    ]
+  },
+  sheetmetal: {
+    title: 'Sheetmetal Technician',
+    scope: [
+      'Perform aircraft structural repairs in accordance with the Structural Repair Manual (SRM) and OEM engineering drawings, including the repair of fuselage skin, frames, stringers, and floor structure.',
+      'Assist licensed engineers in the assessment and classification of structural damage; identify major and minor defects and determine the appropriate repair scheme required.',
+      'Form and fabricate structural parts such as skin doublers, stiffeners, clips, and brackets using sheet metal forming techniques including bending, rolling, and stretch forming.',
+      'Manufacture non-standard, non-stock structural parts; produce templates and layouts for complex geometry repairs.',
+      'Perform and replace plastic aircraft enclosures and secondary structure components; support access requirements for wider airframe and cabin maintenance tasks.',
+      'Interpret basic drawings, blueprints, and engineering specifications; operate hand tools, power tools, and riveting equipment correctly.',
+      'Work in confined spaces including fuel tanks when required; hold or be working towards confined space entry certification; rotating shift work required.'
+    ]
+  },
+  ndt: {
+    title: 'NDT Inspector (Non-Destructive Testing)',
+    scope: [
+      'Perform Non-Destructive Testing (NDT) inspections using approved methods including Magnetic Particle Inspection (MPI), Fluorescent Penetrant Inspection (FPI), Eddy Current Testing (ECT), Ultrasonic Testing (UT), and Radiography (X-Ray) on aircraft structures and components.',
+      'Calibrate NDT equipment and verify the validity of chemical consumables (batch numbers, shelf-life, concentration levels) prior to each inspection; conduct system checks per approved technique sheets.',
+      'Inspect components against OEM manuals and engineering drawings for airworthiness; interpret indications, determine accept/reject criteria, and prepare detailed inspection summary reports.',
+      'Develop and write NDT technique sheets and work instructions for new inspection capabilities; contribute to the expansion of the organisation's approved NDT scope.',
+      'Manage consumables inventory with full batch and expiry traceability; maintain NDT documentation files including techniques, chemical usage records, reports, and job files.',
+      'Hold valid NDT Level II certification under NAS 410, EN 4179, ASNT, or APCN Aero standards in relevant methods; M10 and CO1 CAAS certifications are advantageous.',
+      'Meet near vision and colour perception requirements per applicable standards (Jaeger 1 or equivalent); day/night roster shifts required.'
+    ]
+  },
+  qc: {
+    title: 'QC Inspector (Quality Control)',
+    scope: [
+      'Perform dimensional and functional inspections of first article, incoming, in-process, and outgoing parts using precision measurement instruments including micrometers, vernier callipers, height gauges, and CMM machines.',
+      'Verify that all tools, gauges, and measurement equipment used in production are within calibration validity before performing inspections; escalate out-of-calibration items.',
+      'Read and interpret engineering drawings, geometric dimensioning and tolerancing (GD&T) requirements, and material specifications to verify component conformance.',
+      'Record inspection results, monitoring data, and quality non-conformance reports accurately within the quality management system; track corrective and preventive actions to closure.',
+      'Conduct first article inspections and final outgoing inspections; liaise with production and engineering teams to evaluate customer rejections and implement corrective measures.',
+      'Verify manufacturing environment controls and gowning procedures are maintained where applicable; ensure inspection areas meet cleanliness and procedural requirements.',
+      'CMM machine programming and operation is an advantage; minimum 2–5 years of inspection experience in a precision engineering or aerospace manufacturing environment is typically required.'
+    ]
+  },
+  cnc: {
+    title: 'CNC Machinist',
+    scope: [
+      'Set up, programme, and operate CNC milling machines, CNC lathes, and multi-axis machining centres to machine precision components to engineering drawing specifications.',
+      'Read and interpret technical drawings, blueprints, and engineering specifications; verify Mazatrol/EIA programmes against engineering drawings before production commences.',
+      'Perform machine setup including workpiece clamping, fixture alignment, tool setting, tool offset management, and tool life monitoring; conduct first article setup and trial cutting.',
+      'Conduct in-process inspections and dimensional quality checks using micrometers, vernier callipers, and other precision gauges to ensure components meet specified tolerances.',
+      'Troubleshoot machining issues such as tool breakage, dimensional drift, surface finish problems, and chatter; adjust cutting parameters to optimise cycle time and component quality.',
+      'Carry out daily machine maintenance checks; maintain a clean and organised work environment; comply with all workplace safety regulations and machine-specific operating procedures.',
+      'Minimum 5 years of CNC machining experience; familiarity with aerospace-grade materials (aluminium alloys, titanium, stainless steel) is highly advantageous.'
+    ]
+  },
+  stores: {
+    title: 'Storekeeper (Aviation Parts / Stores)',
+    scope: [
+      'Receive, verify, and process all incoming aircraft spare parts, components, consumables, and tooling deliveries against purchase orders and delivery documentation; refuse acceptance of damaged, incorrect, or non-conforming items.',
+      'Issue parts and materials against authorised stores requisition forms; confirm quantities and part numbers match the requisition before releasing stock to the production floor or engineering teams.',
+      'Maintain accurate inventory records using ERP/SAP or materials management systems; post all goods receipts and issues promptly and conduct periodic stock counts to reconcile physical inventory.',
+      'Ensure all aircraft parts and components are stored, handled, and preserved in accordance with OEM requirements, shelf-life controls, and airworthiness regulations; maintain traceability of serialised and life-limited components.',
+      'Monitor minimum stock levels and reorder points; coordinate with procurement to raise purchasing requisitions for replenishment and ensure parts availability for planned maintenance checks.',
+      'Keep storage areas clean, organised, and in compliance with health, safety, and Foreign Object Damage (FOD) prevention requirements; segregate serviceable, unserviceable, and quarantine stock clearly.',
+      'Maintain controlled documentation for all transactions, including batch records, certificates of conformity, and airworthiness release documentation for aviation parts.'
+    ]
+  },
+  operator: {
+    title: 'General Operator (Aviation / Aerospace)',
+    scope: [
+      'Operate and monitor production machinery and assembly equipment in an aviation or aerospace manufacturing environment to maintain smooth and continuous output in line with daily production targets.',
+      'Carry out assembly, sub-assembly, or processing tasks as directed by production supervisors; follow approved work instructions, standard operating procedures, and job cards at all times.',
+      'Inspect completed products and components against quality standards and engineering specifications; identify and report non-conforming items to the quality control team for disposition.',
+      'Perform basic troubleshooting, equipment changeovers, and first-line maintenance on assigned machines; report equipment faults or abnormalities to maintenance personnel promptly.',
+      'Maintain accurate production records, output logs, and quality data entry in the manufacturing management system as required for traceability and process control.',
+      'Adhere strictly to workplace safety regulations, Foreign Object Damage (FOD) prevention procedures, and housekeeping standards; participate in regular safety briefings and toolbox talks.',
+      'Carry out ad-hoc tasks and support duties as assigned by supervisors; work rotating shifts including morning, afternoon, and night shifts as required by operational needs.'
+    ]
+  },
+  cleaner: {
+    title: 'Aircraft Cleaner',
+    scope: [
+      'Perform interior cabin cleaning of aircraft during turnaround, overnight stops, and scheduled maintenance visits, including deep cleaning of passenger seats, crew seats, seat pockets, and seatbelt assemblies.',
+      'Clean and sanitise lavatories and galleys thoroughly, including all surfaces, fixtures, waste compartments, and water systems; replenish consumables as required.',
+      'Wipe down and clean ceiling panels, sidewall panels, dado panels, carpet areas, and cabin door interiors to the airline's presentation and hygiene standards.',
+      'Remove waste, litter, and cabin debris; ensure proper segregation and disposal of waste in accordance with CAAS and airport authority regulations.',
+      'Operate cabin cleaning equipment including vacuum cleaners, steam cleaners, and pressure washing equipment where applicable; handle cleaning chemicals safely in accordance with MSDS requirements.',
+      'Work in physically demanding conditions including confined cabin spaces, hot and humid environments, and at heights on aircraft entry doors; comply with all airside safety and security requirements.',
+      'Commit to flexible working hours including shift work, weekends, and public holidays; comply with Changi Airport Group (CAG) airside pass requirements and security regulations at all times.'
+    ]
+  },
+  qa: {
+    title: 'QA Inspector (Quality Assurance)',
+    scope: [
+      'Perform surveillance and audit of maintenance activities on aircraft and components to ensure work performed is in compliance with applicable airworthiness regulatory requirements, including CAAS Part 145, EASA Part 145, and/or AS9110 standards.',
+      'Conduct internal and external quality audits; review maintenance documentation, job cards, and technical records for accuracy, completeness, and regulatory compliance.',
+      'Identify non-conformances, raise Corrective Action Requests (CARs), and track corrective and preventive actions (CAPAs) through to timely and effective closure.',
+      'Deliver training and awareness sessions on regulatory compliance, the Maintenance Organisation Exposition (MOE), human factors, and Safety Management System (SMS) requirements.',
+      'Execute incident and accident investigations; analyse quality performance metrics and trend data to identify emerging safety and quality risks; lead continuous improvement initiatives.',
+      'Review and approve new capability assessments, process changes, and subcontractor approvals; support the QA Manager in maintaining and renewing regulatory approvals and certifications.',
+      'Hold or be working towards a CAAS Part 66 Licence, FAA A&P Certificate, or equivalent; minimum 2–5 years of QA experience in an MRO or airline environment is required.'
+    ]
+  },
+  painter: {
+    title: 'Aircraft Painter',
+    scope: [
+      'Prepare metal and composite aircraft surfaces for painting by performing chemical paint stripping, filling, sanding, abrading, and cleaning operations to achieve the required surface profile and cleanliness standard.',
+      'Mix and thin paint and coating systems (primers, topcoats, clear coats) in accordance with the paint manufacturer's Technical Data Sheet (TDS) and the aircraft operator's livery specification; comply with MSDS/SDS requirements for all chemical handling.',
+      'Apply paint by spray painting to commercial aircraft fuselage, control surfaces, and component parts, achieving the correct film thickness, colour uniformity, and finish quality; carry out masking and unmasking operations accurately.',
+      'Perform paint touch-up, blending, and polishing on aircraft parts and components to restore or maintain the approved appearance standard.',
+      'Understand the aerodynamic and functional significance of aircraft surfaces, including antenna locations, pitot-static ports, control surfaces, and altimeter static vents that must not be painted over or obstructed.',
+      'Maintain spray painting equipment, compressors, and spray booths in good operating condition; follow environmental and waste disposal procedures for paint waste and solvent-contaminated materials.',
+      'Hold or be pursuing Working at Heights (WAH) certification and Scissor Lift operator licence; minimum 2–5 years of spray painting experience in an industrial, automotive, or aerospace environment is required.'
+    ]
+  },
+  welder: {
+    title: 'Aerospace Welder',
+    scope: [
+      'Perform welding operations using TIG (GTAW), MIG (GMAW), and arc welding techniques on aerospace-grade materials including aluminium alloys, stainless steel, titanium, and nickel alloys to produce structural assemblies and components to engineering drawing specifications.',
+      'Read and interpret engineering drawings, weld symbols, welding procedure specifications (WPS), and technical documentation to determine the correct welding process, filler material, and pre/post-weld treatment required.',
+      'Prepare metal surfaces prior to welding by cleaning, grinding, degreasing, and fitting up components to the correct joint geometry; align parts using precision tools, jigs, and fixtures to maintain dimensional accuracy.',
+      'Inspect completed welds visually and using basic non-destructive testing methods to identify surface defects such as porosity, cracks, undercut, and incomplete fusion; maintain welding logs and records for regulatory traceability.',
+      'Repair existing weldments on aircraft structures, components, and ground support equipment by gouging, grinding, and re-welding in accordance with the approved repair scheme and OEM repair manuals.',
+      'Maintain welding equipment, torches, gas regulators, and protective gear in serviceable condition; comply with all workplace safety regulations, PPE requirements, and hazardous materials handling procedures for welding gases and consumables.',
+      'Hold or be working towards AWS welding certification or an equivalent approved welding qualification; minimum 2–5 years of proven welding experience required, with aerospace or precision engineering experience considered a strong advantage.'
+    ]
+  }
+};
+
+/* ── Modal Logic ────────────────────────────────────────── */
+const backdrop   = document.getElementById('role-modal-backdrop');
+const modalTitle = document.getElementById('role-modal-title-text');
+const modalList  = document.getElementById('role-modal-list');
+const closeBtn   = document.getElementById('role-modal-close');
+
+function openModal(roleKey) {
+  const data = ROLE_DATA[roleKey];
+  if (!data) return;
+  modalTitle.textContent = data.title;
+  modalList.innerHTML = data.scope.map(s => `<li>${s}</li>`).join('');
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.role-chip[data-role]').forEach(chip => {
+  chip.addEventListener('click', () => openModal(chip.dataset.role));
+});
+
+closeBtn.addEventListener('click', closeModal);
+backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
