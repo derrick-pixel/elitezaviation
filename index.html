@@ -165,6 +165,154 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   FRONTIER GALLERY
+═══════════════════════════════════════════════════════════ */
+#frontier { background: var(--bg2); padding: 100px 0; }
+.frontier-header { text-align: center; margin-bottom: 60px; }
+.frontier-header .body-text { margin: 0 auto; text-align: center; }
+
+.frontier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 280px 280px;
+  gap: 3px;
+}
+
+/* Featured top-left card is wider */
+.mission-card {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  background: var(--bg3);
+}
+.mission-card:nth-child(1) { grid-column: span 2; }
+
+.mission-card-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 6s ease, filter .4s;
+  filter: brightness(.55) saturate(1.1);
+}
+.mission-card:hover .mission-card-img {
+  transform: scale(1.06);
+  filter: brightness(.7) saturate(1.3);
+}
+
+/* Neon scan-line on hover */
+.mission-card::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  top: -2px;
+  transition: top .4s ease;
+  z-index: 3;
+  opacity: 0;
+}
+.mission-card:hover::before {
+  top: 0;
+  animation: scanDown .8s ease forwards;
+  opacity: 1;
+}
+@keyframes scanDown {
+  from { top: 0; opacity: 1; }
+  to   { top: 100%; opacity: 0; }
+}
+
+.mission-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(3,12,26,.95) 0%,
+    rgba(3,12,26,.5) 50%,
+    rgba(3,12,26,.15) 100%
+  );
+  z-index: 2;
+}
+
+.mission-card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 28px;
+  z-index: 3;
+  transition: transform .3s ease;
+}
+.mission-card:hover .mission-card-content { transform: translateY(-4px); }
+
+.mission-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0,212,255,.12);
+  border: 1px solid rgba(0,212,255,.25);
+  padding: 4px 10px;
+  margin-bottom: 10px;
+}
+.mission-tag-dot { width: 4px; height: 4px; background: var(--cyan); border-radius: 50%; }
+
+.mission-name {
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(0,0,0,.8);
+  margin-bottom: 6px;
+}
+.mission-card:nth-child(1) .mission-name { font-size: 24px; }
+
+.mission-desc {
+  font-size: 12px;
+  color: rgba(180,220,255,.65);
+  line-height: 1.5;
+  max-width: 380px;
+}
+
+/* HUD corner brackets on cards */
+.mission-card::after {
+  content: '';
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 18px; height: 18px;
+  border-top: 1px solid var(--cyan);
+  border-right: 1px solid var(--cyan);
+  z-index: 4;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.mission-card:hover::after { opacity: .6; }
+
+.mission-card-corner {
+  position: absolute;
+  bottom: 12px; left: 12px;
+  width: 18px; height: 18px;
+  border-bottom: 1px solid var(--cyan);
+  border-left: 1px solid var(--cyan);
+  z-index: 4;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.mission-card:hover .mission-card-corner { opacity: .6; }
+
+@media (max-width: 768px) {
+  .frontier-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .mission-card { height: 240px; }
+  .mission-card:nth-child(1) { grid-column: span 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════
    SCANLINE OVERLAY
 ═══════════════════════════════════════════════════════════ */
 .scanline {
@@ -274,6 +422,16 @@ nav::after {
   position: relative;
   overflow: hidden;
   background: var(--bg);
+}
+/* Hero photo layer — sits beneath starfield and gradients */
+#hero-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1920&q=80&fit=crop');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(.35) saturate(1.2);
+  z-index: 0;
 }
 #starfield {
   position: absolute;
@@ -1300,6 +1458,7 @@ footer {
 
 <!-- ═══ HERO ═════════════════════════════════════════════════ -->
 <section id="hero">
+  <div id="hero-photo"></div>
   <div class="hero-glow-1"></div>
   <div class="hero-glow-2"></div>
 
@@ -1382,6 +1541,112 @@ footer {
     </div>
   </div>
 </div>
+
+<!-- ═══ FRONTIER GALLERY ══════════════════════════════════════ -->
+<section id="frontier">
+  <div class="container">
+    <div class="frontier-header">
+      <div class="label" style="justify-content:center;">The Frontier</div>
+      <h2 class="heading" style="text-align:center;">HUMANITY AT THE <span class="hi">EDGE OF SPACE</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">
+        Elitez Aviation exists at the intersection of human ambition and aerospace precision — powering the workforce behind the missions that define this era of exploration.
+      </p>
+    </div>
+
+    <div class="frontier-grid">
+
+      <!-- Card 1 — Rocket Launch (featured wide) -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=1400&q=85&fit=crop');background-position:center 20%;"></div>
+        <div class="mission-card-overlay"></div>
+        <div class="mission-card-corner"></div>
+        <div class="mission-card-content">
+          <div class="mission-tag"><span class="mission-tag-dot"></span>Launch Operations</div>
+          <div class="mission-name">Rocket Launch</div>
+          <p class="mission-desc">From pre-launch checks to post-ignition ground ops — aviation technicians are the backbone of every successful launch sequence.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 — ISS / Space Station -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=800&q=85&fit=crop');background-position:center;"></div>
+        <div class="mission-card-overlay"></div>
+        <div class="mission-card-corner"></div>
+        <div class="mission-card-content">
+          <div class="mission-tag"><span class="mission-tag-dot"></span>Orbital Platform</div>
+          <div class="mission-name">Earth Orbit</div>
+          <p class="mission-desc">Low Earth orbit operations — the gateway to deep space.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 — Mars Landing -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1614726365952-510103b1891a?w=800&q=85&fit=crop');background-position:center;"></div>
+        <div class="mission-card-overlay" style="background:linear-gradient(to top,rgba(60,10,5,.95) 0%,rgba(40,8,4,.5) 50%,rgba(20,5,2,.15) 100%);"></div>
+        <div class="mission-card-corner"></div>
+        <div class="mission-card-content">
+          <div class="mission-tag" style="color:#ff6b35;background:rgba(255,107,53,.12);border-color:rgba(255,107,53,.3);"><span class="mission-tag-dot" style="background:#ff6b35;"></span>Planetary Science</div>
+          <div class="mission-name">Mars Landing</div>
+          <p class="mission-desc">Surface operations on the Red Planet demand precision-grade MRO capability.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 — Artemis Lunar Program -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1614642264762-d0a3b8bf3700?w=800&q=85&fit=crop');background-position:center;"></div>
+        <div class="mission-card-overlay" style="background:linear-gradient(to top,rgba(5,10,40,.95) 0%,rgba(5,10,40,.5) 50%,transparent 100%);"></div>
+        <div class="mission-card-corner"></div>
+        <div class="mission-card-content">
+          <div class="mission-tag"><span class="mission-tag-dot"></span>Artemis Programme</div>
+          <div class="mission-name">Lunar Flyby</div>
+          <p class="mission-desc">Artemis returns humanity to the Moon — and beyond.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 — Space Elevator / Orbital Tether Concept -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1454789548928-9efd52dc4031?w=800&q=85&fit=crop');background-position:center;"></div>
+        <div class="mission-card-overlay"></div>
+        <div class="mission-card-corner"></div>
+        <!-- Overlay SVG: orbital tether concept -->
+        <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2;opacity:.18;pointer-events:none;" viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice">
+          <!-- Tether cable -->
+          <line x1="200" y1="0" x2="200" y2="280" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <!-- Counterweight -->
+          <circle cx="200" cy="20" r="8" fill="none" stroke="#00d4ff" stroke-width="1"/>
+          <circle cx="200" cy="20" r="3" fill="#00d4ff"/>
+          <!-- Station rings -->
+          <ellipse cx="200" cy="140" rx="40" ry="10" fill="none" stroke="#00d4ff" stroke-width="1"/>
+          <ellipse cx="200" cy="140" rx="60" ry="15" fill="none" stroke="#00d4ff" stroke-width=".5" opacity=".5"/>
+          <!-- Earth arc -->
+          <ellipse cx="200" cy="300" rx="180" ry="80" fill="none" stroke="#00d4ff" stroke-width="1" opacity=".6"/>
+          <!-- Grid lines -->
+          <line x1="140" y1="140" x2="260" y2="140" stroke="#00d4ff" stroke-width=".5" opacity=".4"/>
+          <text x="220" y="135" fill="#00d4ff" font-size="8" font-family="monospace" opacity=".7">GEO 35,786 KM</text>
+          <text x="210" y="25" fill="#00d4ff" font-size="8" font-family="monospace" opacity=".7">COUNTERWEIGHT</text>
+        </svg>
+        <div class="mission-card-content">
+          <div class="mission-tag"><span class="mission-tag-dot"></span>Near Future</div>
+          <div class="mission-name">Space Elevator</div>
+          <p class="mission-desc">Carbon nanotube tethers from Earth to GEO — the next paradigm in space access.</p>
+        </div>
+      </div>
+
+      <!-- Card 6 — James Webb / Deep Field -->
+      <div class="mission-card">
+        <div class="mission-card-img" style="background-image:url('https://images.unsplash.com/photo-1462332420958-a05d1e002413?w=800&q=85&fit=crop');background-position:center;"></div>
+        <div class="mission-card-overlay" style="background:linear-gradient(to top,rgba(10,5,40,.95) 0%,rgba(10,5,40,.4) 50%,transparent 100%);"></div>
+        <div class="mission-card-corner"></div>
+        <div class="mission-card-content">
+          <div class="mission-tag" style="color:#c084fc;background:rgba(192,132,252,.1);border-color:rgba(192,132,252,.3);"><span class="mission-tag-dot" style="background:#c084fc;"></span>Deep Field</div>
+          <div class="mission-name">James Webb</div>
+          <p class="mission-desc">13.8 billion light-years into the cosmos — science at the edge of the observable universe.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ═══ ABOUT ════════════════════════════════════════════════ -->
 <section id="about" class="section">
