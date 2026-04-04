@@ -3,1470 +3,1576 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elitez Aviation | Aviation HR Solutions Singapore</title>
-  <meta name="description" content="Elitez Aviation is Singapore's premier aviation HR solutions provider, specialising in aircraft technician recruitment, MRO staffing, and aerospace workforce management." />
+  <title>Elitez Aviation | Aviation HR Solutions</title>
+  <meta name="description" content="Elitez Aviation — Singapore's frontier aviation workforce partner. Precision-engineered HR solutions for airlines and MROs." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Reset & Base ─────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1a2540;
-      background: #fff;
-      line-height: 1.6;
-    }
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
+/* ═══════════════════════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #030c1a;
+  color: #cce6ff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
 
-    /* ─── Variables ────────────────────────────────────── */
-    :root {
-      --navy:   #0d2353;
-      --navy2:  #1a3a6e;
-      --blue:   #0099d6;
-      --blue2:  #00b4f0;
-      --light:  #f0f6fc;
-      --gray:   #64748b;
-      --white:  #ffffff;
-      --section-gap: 96px;
-    }
+:root {
+  --cyan:    #00d4ff;
+  --cyan2:   #00f5ff;
+  --blue:    #0055ff;
+  --purple:  #7c2fff;
+  --bg:      #030c1a;
+  --bg2:     #06152b;
+  --bg3:     #091e3a;
+  --glass:   rgba(0, 212, 255, 0.04);
+  --border:  rgba(0, 212, 255, 0.18);
+  --border2: rgba(0, 212, 255, 0.08);
+  --text:    #cce6ff;
+  --text2:   rgba(180, 220, 255, 0.55);
+  --glow:    0 0 20px rgba(0, 212, 255, 0.3);
+  --glow2:   0 0 40px rgba(0, 212, 255, 0.15);
+}
 
-    /* ─── Utility ──────────────────────────────────────── */
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    .section { padding: var(--section-gap) 0; }
-    .section-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .section-title span { color: var(--blue); }
-    .section-body {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 680px;
-    }
-    .tag {
-      display: inline-block;
-      background: var(--light);
-      color: var(--navy);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 100px;
-      border: 1px solid #c8dff5;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .2s;
-    }
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-      border: 2px solid var(--blue);
-    }
-    .btn-primary:hover { background: #007ab8; border-color: #007ab8; }
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,.5);
-    }
-    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════════ */
+.orb { font-family: 'Orbitron', monospace; }
+.mono { font-family: 'Space Mono', monospace; }
 
-    /* ─── Nav ──────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(13,35,83,.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-    .nav-logo {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-    .nav-logo-top {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.5px;
-    }
-    .nav-logo-top .slash { color: var(--blue); }
-    .nav-logo-sub {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      color: var(--blue2);
-      margin-top: 2px;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: rgba(255,255,255,.75);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: all .2s;
-    }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,.08); }
-    .nav-cta {
-      background: var(--blue);
-      color: #fff !important;
-      padding: 8px 20px !important;
-      border-radius: 6px !important;
-    }
-    .nav-cta:hover { background: #007ab8 !important; }
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all .3s;
-    }
+.label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.label::before {
+  content: '';
+  display: inline-block;
+  width: 24px; height: 1px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
 
-    /* ─── Hero ─────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #06132e 0%, #0d2353 40%, #0a3060 70%, #0d2353 100%);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 68px;
-    }
-    .hero-bg-pattern {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 80%, rgba(0,153,214,.18) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0,180,240,.12) 0%, transparent 50%),
-        radial-gradient(circle at 60% 60%, rgba(0,153,214,.08) 0%, transparent 40%);
-    }
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(0,153,214,.04) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0,153,214,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    /* Animated plane silhouettes */
-    .hero-plane {
-      position: absolute;
-      opacity: 0.06;
-      animation: flyAcross linear infinite;
-    }
-    .hero-plane svg { width: 120px; height: auto; fill: #fff; }
-    .hero-plane-1 { top: 20%; animation-duration: 25s; animation-delay: 0s; }
-    .hero-plane-2 { top: 55%; animation-duration: 35s; animation-delay: -12s; }
-    .hero-plane-3 { top: 78%; animation-duration: 20s; animation-delay: -6s; }
-    @keyframes flyAcross {
-      from { transform: translateX(-200px); }
-      to   { transform: translateX(calc(100vw + 200px)); }
-    }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,153,214,.2);
-      border: 1px solid rgba(0,153,214,.4);
-      border-radius: 100px;
-      padding: 6px 16px;
-      color: var(--blue2);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-    .hero-badge-dot {
-      width: 8px; height: 8px;
-      background: var(--blue2);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%  { opacity: .5; transform: scale(1.4); }
-    }
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(36px, 6vw, 72px);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 24px;
-    }
-    .hero-title .accent { color: var(--blue2); }
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 19px);
-      color: rgba(255,255,255,.7);
-      max-width: 580px;
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 64px; }
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    .hero-stat-item {}
-    .hero-stat-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-    }
-    .hero-stat-num span { color: var(--blue2); }
-    .hero-stat-label {
-      font-size: 13px;
-      color: rgba(255,255,255,.55);
-      margin-top: 4px;
-    }
-    .hero-visual {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 45%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-visual-inner {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, #0d2353, transparent);
-      position: relative;
-    }
-    .hero-visual-card {
-      position: absolute;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      padding: 20px 24px;
-      backdrop-filter: blur(8px);
-    }
-    .hero-visual-card-1 { bottom: 22%; right: 8%; }
-    .hero-visual-card-2 { top: 28%; right: 12%; }
-    .hvc-label { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
-    .hvc-value { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: #fff; }
-    .hvc-sub { font-size: 12px; color: var(--blue2); margin-top: 2px; }
+.heading {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(26px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.heading .hi { color: var(--cyan); text-shadow: 0 0 24px rgba(0,212,255,.6); }
 
-    /* ─── Trust Bar ────────────────────────────────────── */
-    #trust {
-      background: var(--navy);
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .trust-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-    .trust-label {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-      white-space: nowrap;
-    }
-    .trust-items {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      flex-wrap: wrap;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,.6);
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .trust-item svg { width: 20px; height: 20px; fill: var(--blue); flex-shrink: 0; }
+.body-text {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.8;
+  max-width: 620px;
+}
 
-    /* ─── About ────────────────────────────────────────── */
-    #about { background: #fff; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-image-wrap {
-      position: relative;
-    }
-    .about-image-main {
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(13,35,83,.18);
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #0d2353, #0a3a6e);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .about-image-main img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
-    }
-    .about-image-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: 0 16px 40px rgba(0,153,214,.4);
-      text-align: center;
-    }
-    .about-image-badge-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 36px;
-      font-weight: 900;
-      line-height: 1;
-    }
-    .about-image-badge-text { font-size: 12px; font-weight: 600; opacity: .85; margin-top: 4px; }
-    .about-alss-badge {
-      position: absolute;
-      top: -16px;
-      left: -16px;
-      background: var(--navy);
-      color: #fff;
-      border-radius: 12px;
-      padding: 14px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      box-shadow: 0 8px 24px rgba(13,35,83,.3);
-      border: 1px solid rgba(0,153,214,.3);
-      max-width: 180px;
-    }
-    .about-alss-badge-icon { color: var(--blue2); font-size: 20px; margin-bottom: 4px; }
-    .about-highlights {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .about-highlight {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .about-highlight-icon {
-      width: 40px; height: 40px;
-      background: var(--light);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .about-highlight-icon svg { width: 20px; height: 20px; fill: var(--blue); }
-    .about-highlight-text strong { display: block; font-size: 15px; color: var(--navy); margin-bottom: 2px; }
-    .about-highlight-text span { font-size: 14px; color: var(--gray); }
+/* ═══════════════════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════════════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+.section { padding: 100px 0; position: relative; }
 
-    /* ─── Stats ────────────────────────────────────────── */
-    #stats { background: var(--navy); padding: 72px 0; }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,.08);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .stat-card {
-      background: rgba(255,255,255,.04);
-      padding: 40px 32px;
-      text-align: center;
-      transition: background .2s;
-    }
-    .stat-card:hover { background: rgba(0,153,214,.1); }
-    .stat-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 52px;
-      font-weight: 900;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-num span { color: var(--blue2); }
-    .stat-label { font-size: 14px; color: rgba(255,255,255,.55); font-weight: 500; }
-    .stat-sublabel { font-size: 12px; color: rgba(255,255,255,.35); margin-top: 4px; }
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL BACKGROUND GRID
+═══════════════════════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /* ─── Services ─────────────────────────────────────── */
-    #services { background: var(--light); }
-    .services-header { text-align: center; margin-bottom: 56px; }
-    .services-header .section-body { margin: 0 auto; }
-    .services-tabs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .service-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 36px 32px;
-      box-shadow: 0 4px 24px rgba(13,35,83,.06);
-      border: 1px solid #e8eef8;
-      transition: all .25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s;
-    }
-    .service-card:hover { box-shadow: 0 16px 48px rgba(13,35,83,.12); transform: translateY(-4px); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card-icon {
-      width: 56px; height: 56px;
-      background: var(--light);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .service-card-icon svg { width: 28px; height: 28px; fill: var(--blue); }
-    .service-card-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 14px;
-    }
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .service-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--gray);
-      font-weight: 500;
-    }
-    .service-list li::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--blue);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+/* ═══════════════════════════════════════════════════════════
+   GLASS CARD
+═══════════════════════════════════════════════════════════ */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+/* HUD corner brackets */
+.glass::before, .glass::after {
+  content: '';
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: var(--cyan);
+  border-style: solid;
+  opacity: .6;
+}
+.glass::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.glass::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-    /* ─── Expertise ────────────────────────────────────── */
-    #expertise { background: #fff; }
-    .expertise-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .expertise-roles {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 32px;
-    }
-    .role-tag {
-      background: var(--light);
-      border: 1px solid #d4e4f4;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--navy);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all .2s;
-    }
-    .role-tag:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .role-tag svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
-    .expertise-visual {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
-      border-radius: 24px;
-      padding: 48px 40px;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .expertise-visual::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; right: -60px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: rgba(0,153,214,.15);
-    }
-    .expertise-visual-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 28px;
-      position: relative;
-    }
-    .expertise-table {
-      width: 100%;
-      border-collapse: collapse;
-      position: relative;
-    }
-    .expertise-table th {
-      background: var(--blue);
-      padding: 12px 16px;
-      text-align: left;
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    .expertise-table td {
-      padding: 11px 16px;
-      font-size: 13px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      color: rgba(255,255,255,.8);
-    }
-    .expertise-table tr:last-child td { border-bottom: none; }
-    .expertise-table tr:nth-child(even) td { background: rgba(255,255,255,.03); }
+/* ═══════════════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+  border: none;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-primary {
+  background: var(--cyan);
+  color: #030c1a;
+}
+.btn-primary:hover {
+  background: var(--cyan2);
+  box-shadow: 0 0 32px rgba(0,212,255,.6), 0 0 80px rgba(0,212,255,.2);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-ghost:hover {
+  background: rgba(0,212,255,.08);
+  box-shadow: var(--glow);
+}
 
-    /* ─── Recruitment Flow ──────────────────────────────── */
-    #flow { background: var(--light); }
-    .flow-header { text-align: center; margin-bottom: 56px; }
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .flow-card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 32px 28px;
-      box-shadow: 0 4px 20px rgba(13,35,83,.06);
-      border: 1px solid #e8eef8;
-      position: relative;
-    }
-    .flow-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 48px;
-      font-weight: 900;
-      color: var(--light);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .flow-card:nth-child(1) .flow-num,
-    .flow-card:nth-child(2) .flow-num,
-    .flow-card:nth-child(3) .flow-num { color: #e6eef8; }
-    .flow-card:nth-child(4) .flow-num,
-    .flow-card:nth-child(5) .flow-num,
-    .flow-card:nth-child(6) .flow-num { color: #e6eef8; }
-    .flow-icon {
-      width: 48px; height: 48px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .flow-icon svg { width: 24px; height: 24px; }
-    .flow-card:nth-child(odd) .flow-icon { background: var(--navy); }
-    .flow-card:nth-child(odd) .flow-icon svg { fill: #fff; }
-    .flow-card:nth-child(even) .flow-icon { background: var(--blue); }
-    .flow-card:nth-child(even) .flow-icon svg { fill: #fff; }
-    .flow-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .flow-desc { font-size: 14px; color: var(--gray); line-height: 1.65; }
+/* ═══════════════════════════════════════════════════════════
+   SCANLINE OVERLAY
+═══════════════════════════════════════════════════════════ */
+.scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,.08) 3px,
+    rgba(0,0,0,.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
-    /* ─── Why Us ────────────────────────────────────────── */
-    #why { background: #fff; }
-    .why-header { text-align: center; margin-bottom: 56px; }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .why-card {
-      padding: 32px 28px;
-      border-radius: 18px;
-      border: 1px solid #e8eef8;
-      transition: all .25s;
-    }
-    .why-card:hover {
-      background: var(--navy);
-      border-color: var(--navy);
-    }
-    .why-card:hover .why-title,
-    .why-card:hover .why-desc { color: rgba(255,255,255,.85); }
-    .why-card:hover .why-title { color: #fff; }
-    .why-card:hover .why-icon-wrap { background: rgba(0,153,214,.2); }
-    .why-card:hover .why-icon-wrap svg { fill: var(--blue2); }
-    .why-icon-wrap {
-      width: 52px; height: 52px;
-      background: var(--light);
-      border-radius: 13px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
-      transition: all .25s;
-    }
-    .why-icon-wrap svg { width: 26px; height: 26px; fill: var(--blue); transition: fill .25s; }
-    .why-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; transition: color .25s; }
-    .why-desc { font-size: 14px; color: var(--gray); line-height: 1.65; transition: color .25s; }
+/* ═══════════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(3,12,26,.92);
+  border-bottom: 1px solid var(--border2);
+  backdrop-filter: blur(20px);
+}
+nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: .4;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-logo-mark {
+  font-family: 'Orbitron', monospace;
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(0,212,255,.4);
+}
+.nav-logo-mark .slash { color: var(--cyan); }
+.nav-logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: .7;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text2);
+  padding: 7px 14px;
+  transition: color .2s;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+.nav-links a:hover { color: var(--cyan); border-color: var(--border); }
+.nav-cta {
+  font-family: 'Orbitron', monospace !important;
+  font-size: 10px !important;
+  color: var(--cyan) !important;
+  border-color: var(--cyan) !important;
+  padding: 8px 18px !important;
+}
+.nav-cta:hover { background: rgba(0,212,255,.08) !important; box-shadow: var(--glow); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
 
-    /* ─── ALSS Highlight ────────────────────────────────── */
-    #alss {
-      background: linear-gradient(135deg, var(--navy) 0%, #0a3060 100%);
-      padding: 80px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    #alss::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,153,214,.2) 0%, transparent 70%);
-    }
-    .alss-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      position: relative;
-    }
-    .alss-content .section-label { color: var(--blue2); }
-    .alss-content .section-title { color: #fff; }
-    .alss-content .section-body { color: rgba(255,255,255,.65); max-width: 520px; }
-    .alss-highlight-box {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      padding: 36px 32px;
-      backdrop-filter: blur(8px);
-    }
-    .alss-stat {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .alss-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .alss-stat:first-child { padding-top: 0; }
-    .alss-stat-icon {
-      width: 48px; height: 48px;
-      background: rgba(0,153,214,.2);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .alss-stat-icon svg { width: 24px; height: 24px; fill: var(--blue2); }
-    .alss-stat-num {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
-    }
-    .alss-stat-label { font-size: 13px; color: rgba(255,255,255,.55); margin-top: 3px; }
+/* ═══════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 72px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+#starfield {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-glow-1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,85,255,.12) 0%, transparent 70%);
+  top: -100px; left: -100px;
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,.1) 0%, transparent 70%);
+  bottom: 0; right: 10%;
+  pointer-events: none;
+}
+/* Radar circle */
+.hero-radar {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px; height: 420px;
+  pointer-events: none;
+  opacity: .18;
+}
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--cyan);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.radar-ring:nth-child(1) { width: 100%; height: 100%; animation: radarPulse 4s ease-out infinite; }
+.radar-ring:nth-child(2) { width: 70%; height: 70%; animation: radarPulse 4s ease-out 1s infinite; }
+.radar-ring:nth-child(3) { width: 40%; height: 40%; animation: radarPulse 4s ease-out 2s infinite; }
+.radar-sweep {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 50%; height: 1px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  animation: radarSweep 4s linear infinite;
+  box-shadow: 0 0 8px var(--cyan);
+}
+@keyframes radarPulse {
+  0% { opacity: .8; }
+  100% { opacity: 0; transform: translate(-50%,-50%) scale(1.3); }
+}
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,212,255,.06);
+  border: 1px solid rgba(0,212,255,.3);
+  padding: 8px 18px;
+  margin-bottom: 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--cyan);
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.2; } }
 
-    /* ─── Regional ──────────────────────────────────────── */
-    #regional { background: var(--light); }
-    .regional-header { text-align: center; margin-bottom: 56px; }
-    .regional-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-    }
-    .region-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 24px 16px;
-      text-align: center;
-      border: 1px solid #e8eef8;
-      box-shadow: 0 2px 12px rgba(13,35,83,.05);
-      transition: all .2s;
-    }
-    .region-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,35,83,.12); border-color: var(--blue); }
-    .region-flag {
-      font-size: 36px;
-      margin-bottom: 10px;
-      line-height: 1;
-    }
-    .region-name { font-size: 13px; font-weight: 700; color: var(--navy); }
-    .region-sub { font-size: 11px; color: var(--gray); margin-top: 3px; }
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(34px, 6vw, 76px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 10px;
+  text-shadow: 0 0 60px rgba(0,212,255,.15);
+}
+.hero-title-accent {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(30px, 5.5vw, 68px);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 28px;
+  display: block;
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--text2);
+  max-width: 540px;
+  margin-bottom: 44px;
+  line-height: 1.8;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 72px; }
+.hero-hud {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.03);
+  position: relative;
+  overflow: hidden;
+}
+.hero-hud::before {
+  content: 'SYSTEM STATUS // OPERATIONAL';
+  position: absolute;
+  top: -1px; right: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  background: var(--bg);
+  padding: 0 8px;
+  opacity: .6;
+}
+.hud-stat {
+  padding: 20px 32px;
+  border-right: 1px solid var(--border2);
+  position: relative;
+}
+.hud-stat:last-child { border-right: none; }
+.hud-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,212,255,.5);
+  line-height: 1;
+}
+.hud-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text2); margin-top: 6px; font-family: 'Space Mono', monospace; }
 
-    /* ─── Services Grid Full ────────────────────────────── */
-    #end-to-end { background: #fff; }
-    .e2e-header { text-align: center; margin-bottom: 56px; }
-    .e2e-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: #e8eef8;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .e2e-card {
-      background: #fff;
-      padding: 36px 30px;
-    }
-    .e2e-icon {
-      width: 44px; height: 44px;
-      background: var(--light);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
-    }
-    .e2e-icon svg { width: 22px; height: 22px; fill: var(--blue); }
-    .e2e-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
-    .e2e-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .e2e-list li { font-size: 13px; color: var(--gray); display: flex; gap: 8px; align-items: flex-start; }
-    .e2e-list li::before { content: '–'; color: var(--blue); font-weight: 700; flex-shrink: 0; }
+/* ═══════════════════════════════════════════════════════════
+   TRUST TICKER
+═══════════════════════════════════════════════════════════ */
+#trust {
+  background: rgba(0,212,255,.03);
+  border-top: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+  padding: 16px 0;
+  overflow: hidden;
+  position: relative;
+}
+.ticker-wrap { overflow: hidden; }
+.ticker {
+  display: flex;
+  gap: 60px;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text2);
+  flex-shrink: 0;
+}
+.ticker-dot { width: 4px; height: 4px; background: var(--cyan); border-radius: 50%; flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
-    /* ─── Team ──────────────────────────────────────────── */
-    #team { background: var(--light); }
-    .team-header { text-align: center; margin-bottom: 56px; }
-    .team-card {
-      max-width: 820px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 16px 56px rgba(13,35,83,.1);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 380px 1fr;
-    }
-    .team-card-photo {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      min-height: 400px;
-      position: relative;
-      overflow: hidden;
-    }
-    .team-card-photo-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-    .team-card-photo-placeholder svg { width: 100px; height: 100px; fill: rgba(255,255,255,.3); }
-    .team-card-name-bar {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: rgba(13,35,83,.85);
-      backdrop-filter: blur(8px);
-      padding: 20px 24px;
-      text-align: center;
-    }
-    .team-card-name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .team-card-role { font-size: 13px; color: var(--blue2); font-weight: 600; margin-top: 4px; }
-    .team-card-info {
-      padding: 40px 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .team-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-    .team-stat {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .team-stat-bar-wrap {
-      flex: 1;
-    }
-    .team-stat-label { font-size: 13px; color: var(--gray); margin-bottom: 6px; font-weight: 500; }
-    .team-stat-bar {
-      height: 6px;
-      background: var(--light);
-      border-radius: 100px;
-      overflow: hidden;
-    }
-    .team-stat-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--blue2)); border-radius: 100px; }
-    .team-stat-years {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--navy);
-      width: 48px;
-      text-align: right;
-    }
-    .team-bio { font-size: 14px; color: var(--gray); line-height: 1.7; }
-    .team-bio strong { color: var(--navy); }
+/* ═══════════════════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════════════════ */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0;
+}
 
-    /* ─── Accreditations ────────────────────────────────── */
-    #accreditation { background: #fff; }
-    .accred-header { text-align: center; margin-bottom: 56px; }
-    .accred-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .accred-card {
-      border: 1px solid #e8eef8;
-      border-radius: 16px;
-      padding: 28px 24px;
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-      transition: all .2s;
-    }
-    .accred-card:hover { border-color: var(--blue); box-shadow: 0 8px 32px rgba(0,153,214,.1); }
-    .accred-icon {
-      width: 52px; height: 52px;
-      background: var(--light);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .accred-icon svg { width: 28px; height: 28px; fill: var(--blue); }
-    .accred-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .accred-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
+/* ═══════════════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════════════ */
+#about { background: var(--bg); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-hex-bg {
+  position: absolute;
+  inset: -20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='69.3'%3E%3Cpolygon points='30,2 58,17.5 58,51.8 30,67.3 2,51.8 2,17.5' fill='none' stroke='rgba(0,212,255,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 69.3px;
+  pointer-events: none;
+}
+.about-panel {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 40px;
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+.about-panel::before { /* Corner bracket overrides */
+  width: 24px; height: 24px;
+  border-width: 2px 0 0 2px;
+}
+.about-panel::after {
+  width: 24px; height: 24px;
+  border-width: 0 2px 2px 0;
+}
+.about-panel-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: .6;
+  margin-bottom: 20px;
+}
+.about-panel-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.about-panel-stat:last-child { border-bottom: none; }
+.about-panel-stat-label { font-size: 12px; color: var(--text2); letter-spacing: .5px; }
+.about-panel-stat-val {
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(0,212,255,.4);
+}
+.about-badge {
+  position: absolute;
+  top: -16px; right: 32px;
+  background: var(--cyan);
+  color: var(--bg);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  font-weight: 700;
+}
+.about-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+}
+.about-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.about-list-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(0,85,255,.1));
+}
+.about-list-icon svg { width: 16px; height: 16px; fill: var(--cyan); }
+.about-list strong { display: block; font-size: 14px; color: #e2f4ff; margin-bottom: 3px; font-weight: 600; }
+.about-list span { font-size: 13px; color: var(--text2); }
 
-    /* ─── Contact ───────────────────────────────────────── */
-    #contact {
-      background: linear-gradient(135deg, var(--navy) 0%, #0a3060 100%);
-      padding: var(--section-gap) 0;
-      position: relative;
-      overflow: hidden;
-    }
-    #contact::before {
-      content: '';
-      position: absolute;
-      bottom: -120px; left: -120px;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,153,214,.15) 0%, transparent 70%);
-    }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      position: relative;
-    }
-    .contact-info .section-label { color: var(--blue2); }
-    .contact-info .section-title { color: #fff; }
-    .contact-info .section-body { color: rgba(255,255,255,.65); }
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-top: 36px;
-    }
-    .contact-detail {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .contact-detail-icon {
-      width: 44px; height: 44px;
-      background: rgba(0,153,214,.15);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .contact-detail-icon svg { width: 22px; height: 22px; fill: var(--blue2); }
-    .contact-detail-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 3px; }
-    .contact-detail-value { font-size: 15px; font-weight: 600; color: #fff; }
-    .contact-form-wrap {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px;
-      padding: 36px 32px;
-      backdrop-filter: blur(8px);
-    }
-    .form-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 24px;
-    }
-    .form-group { margin-bottom: 16px; }
-    .form-label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.5);
-      margin-bottom: 7px;
-    }
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 8px;
-      padding: 12px 16px;
-      color: #fff;
-      font-size: 15px;
-      font-family: inherit;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,.3); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--blue); }
-    .form-select { cursor: pointer; }
-    .form-select option { background: var(--navy); }
-    .form-textarea { resize: vertical; min-height: 100px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-submit {
-      width: 100%;
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background .2s;
-      margin-top: 4px;
-      font-family: inherit;
-    }
-    .form-submit:hover { background: #007ab8; }
+/* ═══════════════════════════════════════════════════════════
+   STATS BAND
+═══════════════════════════════════════════════════════════ */
+#stats {
+  background: var(--bg2);
+  padding: 0;
+  border-top: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-block {
+  padding: 52px 32px;
+  text-align: center;
+  border-right: 1px solid var(--border2);
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.stat-block:last-child { border-right: none; }
+.stat-block::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  transform: scaleX(0);
+  transition: transform .4s;
+}
+.stat-block:hover::before { transform: scaleX(1); }
+.stat-block:hover { background: rgba(0,212,255,.04); }
+.stat-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-num .unit { color: var(--cyan); font-size: 36px; }
+.stat-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text2); }
+.stat-sub { font-size: 11px; color: rgba(0,212,255,.4); margin-top: 4px; letter-spacing: .5px; }
 
-    /* ─── Footer ────────────────────────────────────────── */
-    footer {
-      background: #060f22;
-      padding: 40px 0 24px;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      margin-bottom: 24px;
-    }
-    .footer-brand .nav-logo-top { font-size: 20px; }
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      color: rgba(255,255,255,.4);
-      font-size: 13px;
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: rgba(255,255,255,.8); }
-    .footer-copy {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-copy-text { font-size: 13px; color: rgba(255,255,255,.3); }
-    .footer-parent { font-size: 13px; color: rgba(255,255,255,.25); }
-    .footer-parent a { color: rgba(0,153,214,.6); transition: color .2s; }
-    .footer-parent a:hover { color: var(--blue); }
+/* ═══════════════════════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════════════════════ */
+#services { background: var(--bg); }
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .body-text { margin: 0 auto; text-align: center; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border2);
+}
+.svc-card {
+  background: var(--bg2);
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.svc-card:hover { background: rgba(0,212,255,.04); }
+.svc-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s;
+}
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  color: var(--cyan);
+  opacity: .4;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+.svc-icon {
+  width: 56px; height: 56px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.svc-icon svg { width: 26px; height: 26px; fill: var(--cyan); }
+.svc-title { font-family: 'Orbitron', monospace; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 20px; letter-spacing: .5px; }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.svc-list li {
+  font-size: 13px;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 8px;
+  border-left: 1px solid transparent;
+  transition: border-color .2s, color .2s;
+}
+.svc-list li:hover { border-left-color: var(--cyan); color: #e2f4ff; }
+.svc-list li::before { content: '›'; color: var(--cyan); font-size: 16px; line-height: 1; flex-shrink: 0; }
+.svc-bg-num {
+  position: absolute;
+  bottom: -20px; right: -10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(0,212,255,.025);
+  line-height: 1;
+  pointer-events: none;
+}
 
-    /* ─── Responsive ────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .about-grid, .alss-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-      .expertise-grid { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-card { grid-template-columns: 1fr; max-width: 480px; }
-      .regional-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 768px) {
-      :root { --section-gap: 64px; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .services-tabs, .flow-grid, .accred-grid, .e2e-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 24px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .regional-grid { grid-template-columns: repeat(2, 1fr); }
-      .form-row { grid-template-columns: 1fr; }
-      .expertise-roles { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .regional-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-inner { gap: 16px; }
-    }
+/* ═══════════════════════════════════════════════════════════
+   EXPERTISE
+═══════════════════════════════════════════════════════════ */
+#expertise { background: var(--bg2); }
+.expertise-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 32px;
+}
+.role-chip {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text2);
+  padding: 10px 14px;
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all .2s;
+  background: var(--glass);
+  cursor: default;
+}
+.role-chip::before { content: '◈'; color: var(--cyan); font-size: 10px; flex-shrink: 0; }
+.role-chip:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,212,255,.06); box-shadow: inset 0 0 20px rgba(0,212,255,.04); }
+.expertise-table-wrap {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.expertise-table-wrap::before {
+  content: 'HR SERVICES MATRIX';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: rgba(0,212,255,.08);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+}
+.exp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 45px;
+}
+.exp-table th {
+  background: rgba(0,212,255,.08);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 12px 16px;
+  text-align: left;
+  border-right: 1px solid var(--border2);
+}
+.exp-table th:last-child { border-right: none; }
+.exp-table td {
+  padding: 11px 16px;
+  font-size: 12px;
+  color: var(--text2);
+  border-bottom: 1px solid var(--border2);
+  border-right: 1px solid var(--border2);
+  transition: color .2s, background .2s;
+}
+.exp-table td:last-child { border-right: none; }
+.exp-table tr:last-child td { border-bottom: none; }
+.exp-table tr:hover td { background: rgba(0,212,255,.04); color: #e2f4ff; }
+
+/* ═══════════════════════════════════════════════════════════
+   FLOW
+═══════════════════════════════════════════════════════════ */
+#flow { background: var(--bg); }
+.flow-header { text-align: center; margin-bottom: 60px; }
+.flow-header .body-text { margin: 0 auto; text-align: center; }
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border2);
+}
+.flow-card {
+  background: var(--bg2);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.flow-card:hover { background: rgba(0,212,255,.04); }
+.flow-card-num {
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  opacity: .7;
+}
+.flow-card-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.flow-card-icon svg { width: 22px; height: 22px; fill: var(--cyan); }
+.flow-card-title { font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700; color: #e2f4ff; margin-bottom: 12px; letter-spacing: .5px; }
+.flow-card-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+.flow-card-bg {
+  position: absolute;
+  bottom: -20px; right: -10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(0,212,255,.02);
+  line-height: 1;
+  pointer-events: none;
+}
+/* Connector line on top row */
+.flow-card::after {
+  content: '';
+  position: absolute;
+  top: 50%; right: -1px;
+  width: 1px; height: 40%;
+  transform: translateY(-50%);
+  background: linear-gradient(0deg, transparent, var(--cyan), transparent);
+  opacity: .3;
+}
+.flow-card:nth-child(3n)::after { display: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   WHY US
+═══════════════════════════════════════════════════════════ */
+#why { background: var(--bg2); }
+.why-header { text-align: center; margin-bottom: 60px; }
+.why-header .body-text { margin: 0 auto; text-align: center; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.why-card {
+  padding: 36px 28px;
+  border: 1px solid var(--border2);
+  background: var(--glass);
+  position: relative;
+  overflow: hidden;
+  transition: all .3s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+.why-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(0,212,255,.08), transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.why-card:hover { border-color: var(--border); box-shadow: 0 0 32px rgba(0,212,255,.08); }
+.why-card:hover::before { opacity: 1; }
+.why-icon {
+  width: 48px; height: 48px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  background: rgba(0,212,255,.05);
+  transition: all .3s;
+}
+.why-card:hover .why-icon { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,212,255,.3); }
+.why-icon svg { width: 24px; height: 24px; fill: var(--cyan); }
+.why-title { font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700; color: #e2f4ff; margin-bottom: 12px; letter-spacing: .5px; }
+.why-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════════════════
+   ALSS CALLOUT
+═══════════════════════════════════════════════════════════ */
+#alss {
+  background: var(--bg);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.alss-wrap {
+  border-top: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+  background: linear-gradient(135deg, rgba(0,85,255,.05), rgba(0,212,255,.03));
+  padding: 80px 0;
+  position: relative;
+}
+.alss-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.alss-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  position: relative;
+}
+.alss-data {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border2);
+}
+.alss-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--bg);
+  padding: 24px 28px;
+  transition: background .2s;
+}
+.alss-row:hover { background: rgba(0,212,255,.04); }
+.alss-row-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.alss-row-icon svg { width: 22px; height: 22px; fill: var(--cyan); }
+.alss-row-val { font-family: 'Orbitron', monospace; font-size: 20px; font-weight: 800; color: var(--cyan); text-shadow: 0 0 16px rgba(0,212,255,.4); }
+.alss-row-label { font-size: 12px; color: var(--text2); margin-top: 2px; }
+
+/* ═══════════════════════════════════════════════════════════
+   REGIONAL
+═══════════════════════════════════════════════════════════ */
+#regional { background: var(--bg2); }
+.regional-header { text-align: center; margin-bottom: 60px; }
+.regional-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--border2);
+}
+.region-card {
+  background: var(--bg);
+  padding: 32px 16px;
+  text-align: center;
+  transition: background .2s;
+  position: relative;
+  overflow: hidden;
+}
+.region-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  transform: scaleX(0);
+  transition: transform .3s;
+}
+.region-card:hover { background: rgba(0,212,255,.05); }
+.region-card:hover::after { transform: scaleX(1); }
+.region-flag { font-size: 32px; margin-bottom: 12px; }
+.region-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #e2f4ff;
+}
+.region-sub { font-size: 10px; color: var(--text2); margin-top: 4px; }
+
+/* ═══════════════════════════════════════════════════════════
+   END-TO-END
+═══════════════════════════════════════════════════════════ */
+#e2e { background: var(--bg); }
+.e2e-header { text-align: center; margin-bottom: 60px; }
+.e2e-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border2);
+}
+.e2e-card {
+  background: var(--bg2);
+  padding: 36px 28px;
+  transition: background .2s;
+}
+.e2e-card:hover { background: rgba(0,212,255,.04); }
+.e2e-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.e2e-icon svg { width: 20px; height: 20px; fill: var(--cyan); }
+.e2e-title { font-family: 'Orbitron', monospace; font-size: 12px; font-weight: 700; color: #e2f4ff; margin-bottom: 14px; letter-spacing: .5px; }
+.e2e-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.e2e-list li { font-size: 12px; color: var(--text2); display: flex; gap: 8px; }
+.e2e-list li::before { content: '//'; color: var(--cyan); font-family: 'Space Mono', monospace; font-size: 10px; flex-shrink: 0; opacity: .6; }
+
+/* ═══════════════════════════════════════════════════════════
+   TEAM
+═══════════════════════════════════════════════════════════ */
+#team { background: var(--bg2); }
+.team-header { text-align: center; margin-bottom: 60px; }
+.team-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+}
+.team-photo {
+  background: linear-gradient(160deg, var(--bg3) 0%, #041530 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+  min-height: 380px;
+}
+.team-photo-hex {
+  position: absolute;
+  top: 20px; right: -40px;
+  width: 180px; height: 180px;
+  opacity: .06;
+}
+.team-photo-avatar {
+  width: 100px; height: 100px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: rgba(0,212,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.team-photo-avatar svg { width: 50px; height: 50px; fill: rgba(0,212,255,.4); }
+.team-name-plate {
+  text-align: center;
+  width: 100%;
+}
+.team-name { font-family: 'Orbitron', monospace; font-size: 18px; font-weight: 800; color: #fff; }
+.team-role { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin-top: 6px; }
+.team-info { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.team-bars { display: flex; flex-direction: column; gap: 18px; }
+.team-bar-item {}
+.team-bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.team-bar-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text2); }
+.team-bar-val { font-family: 'Orbitron', monospace; font-size: 12px; font-weight: 700; color: var(--cyan); }
+.team-bar-track { height: 3px; background: var(--border2); position: relative; overflow: hidden; }
+.team-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  box-shadow: 0 0 8px var(--cyan);
+  animation: barGrow .8s ease-out forwards;
+  transform-origin: left;
+}
+@keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.team-bio { font-size: 13px; color: var(--text2); line-height: 1.8; }
+.team-bio strong { color: #e2f4ff; }
+.team-edu {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  opacity: .6;
+  display: flex; gap: 8px; align-items: center;
+}
+.team-edu::before { content: '◈'; }
+
+/* ═══════════════════════════════════════════════════════════
+   ACCREDITATIONS
+═══════════════════════════════════════════════════════════ */
+#accreditation { background: var(--bg); }
+.accred-header { text-align: center; margin-bottom: 60px; }
+.accred-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border2);
+}
+.accred-card {
+  background: var(--bg2);
+  padding: 32px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: background .2s;
+  position: relative;
+  overflow: hidden;
+}
+.accred-card:hover { background: rgba(0,212,255,.04); }
+.accred-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(0deg, transparent, var(--cyan), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.accred-card:hover::before { opacity: 1; }
+.accred-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.accred-icon svg { width: 22px; height: 22px; fill: var(--cyan); }
+.accred-name { font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700; color: #e2f4ff; margin-bottom: 8px; letter-spacing: .5px; }
+.accred-desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════════════════ */
+#contact { background: var(--bg2); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+}
+.contact-details { display: flex; flex-direction: column; gap: 20px; margin-top: 36px; }
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid var(--border2);
+  background: var(--glass);
+  transition: border-color .2s;
+}
+.contact-item:hover { border-color: var(--border); }
+.contact-item-icon {
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  background: rgba(0,212,255,.05);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-item-icon svg { width: 20px; height: 20px; fill: var(--cyan); }
+.contact-item-lbl { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); opacity: .6; margin-bottom: 4px; }
+.contact-item-val { font-size: 14px; color: #e2f4ff; font-weight: 500; }
+
+.form-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 40px 36px;
+  position: relative;
+}
+.form-title { font-family: 'Orbitron', monospace; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 28px; letter-spacing: 1px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); opacity: .6; margin-bottom: 8px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  background: rgba(0,212,255,.03);
+  border: 1px solid var(--border2);
+  color: #e2f4ff;
+  padding: 12px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  border-radius: 0;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0,212,255,.1);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(180,220,255,.25); }
+.form-select { cursor: pointer; }
+.form-select option { background: var(--bg); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit {
+  width: 100%;
+  background: var(--cyan);
+  color: var(--bg);
+  border: none;
+  padding: 14px;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  margin-top: 4px;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.form-submit:hover { background: var(--cyan2); box-shadow: 0 0 32px rgba(0,212,255,.5); }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════ */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border2);
+  padding: 40px 0 24px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 24px;
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; list-style: none; }
+.footer-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text2);
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--cyan); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1.5px; color: rgba(0,212,255,.3); }
+.footer-parent { font-size: 11px; color: var(--text2); }
+.footer-parent a { color: var(--cyan); opacity: .7; transition: opacity .2s; }
+.footer-parent a:hover { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .about-grid, .expertise-split, .alss-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .hero-radar { display: none; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-wrap { grid-template-columns: 1fr; max-width: 500px; }
+  .regional-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .services-grid, .flow-grid, .accred-grid, .e2e-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .regional-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .roles-grid { grid-template-columns: 1fr; }
+  .hero-hud { flex-direction: column; }
+  .hud-stat { border-right: none; border-bottom: 1px solid var(--border2); }
+  .hud-stat:last-child { border-bottom: none; }
+  .footer-top { flex-direction: column; }
+}
   </style>
 </head>
 <body>
 
-<!-- ─── Navigation ───────────────────────────────────────── -->
+<!-- ═══ CANVAS STARFIELD ════════════════════════════════════ -->
+<canvas id="starfield" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+<!-- ═══ NAVIGATION ══════════════════════════════════════════ -->
 <nav>
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">
-      <div class="nav-logo-top">ELIT<span class="slash">✈</span>EZ</div>
+      <div class="nav-logo-mark">ELIT<span class="slash">✈</span>EZ</div>
       <div class="nav-logo-sub">Aviation</div>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#flow">Our Process</a></li>
+      <li><a href="#flow">Process</a></li>
       <li><a href="#why">Why Us</a></li>
-      <li><a href="#accreditation">Accreditations</a></li>
-      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      <li><a href="#accreditation">Credentials</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
-    <div class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+    <div class="nav-hamburger" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<!-- ─── Mobile Nav ─────────────────────────────────────────── -->
-<div id="mobile-nav" style="display:none; position:fixed; top:68px; left:0; right:0; bottom:0; background:rgba(13,35,83,.98); z-index:999; padding:32px 24px; overflow-y:auto;">
-  <ul style="list-style:none; display:flex; flex-direction:column; gap:4px;">
-    <li><a href="#about" onclick="toggleNav()" style="display:block; padding:14px 0; font-size:18px; font-weight:600; color:rgba(255,255,255,.8); border-bottom:1px solid rgba(255,255,255,.06);">About</a></li>
-    <li><a href="#services" onclick="toggleNav()" style="display:block; padding:14px 0; font-size:18px; font-weight:600; color:rgba(255,255,255,.8); border-bottom:1px solid rgba(255,255,255,.06);">Services</a></li>
-    <li><a href="#flow" onclick="toggleNav()" style="display:block; padding:14px 0; font-size:18px; font-weight:600; color:rgba(255,255,255,.8); border-bottom:1px solid rgba(255,255,255,.06);">Our Process</a></li>
-    <li><a href="#why" onclick="toggleNav()" style="display:block; padding:14px 0; font-size:18px; font-weight:600; color:rgba(255,255,255,.8); border-bottom:1px solid rgba(255,255,255,.06);">Why Us</a></li>
-    <li><a href="#accreditation" onclick="toggleNav()" style="display:block; padding:14px 0; font-size:18px; font-weight:600; color:rgba(255,255,255,.8); border-bottom:1px solid rgba(255,255,255,.06);">Accreditations</a></li>
-    <li style="margin-top:24px;"><a href="#contact" onclick="toggleNav()" style="display:block; padding:16px 24px; background:var(--blue); color:#fff; border-radius:10px; font-size:16px; font-weight:700; text-align:center;">Contact Us</a></li>
+<!-- Mobile nav -->
+<div id="mobile-nav" style="display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(3,12,26,.98);z-index:999;padding:40px 28px;">
+  <ul style="list-style:none;display:flex;flex-direction:column;gap:2px;">
+    <li><a href="#about" onclick="toggleNav()" style="display:block;padding:16px 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,220,255,.6);border-bottom:1px solid rgba(0,212,255,.08);">About</a></li>
+    <li><a href="#services" onclick="toggleNav()" style="display:block;padding:16px 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,220,255,.6);border-bottom:1px solid rgba(0,212,255,.08);">Services</a></li>
+    <li><a href="#flow" onclick="toggleNav()" style="display:block;padding:16px 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,220,255,.6);border-bottom:1px solid rgba(0,212,255,.08);">Process</a></li>
+    <li><a href="#why" onclick="toggleNav()" style="display:block;padding:16px 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,220,255,.6);border-bottom:1px solid rgba(0,212,255,.08);">Why Us</a></li>
+    <li><a href="#accreditation" onclick="toggleNav()" style="display:block;padding:16px 0;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,220,255,.6);border-bottom:1px solid rgba(0,212,255,.08);">Credentials</a></li>
+    <li style="margin-top:28px;"><a href="#contact" onclick="toggleNav()" style="display:block;padding:16px 24px;background:var(--cyan);color:var(--bg);font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;text-align:center;">Contact Us</a></li>
   </ul>
 </div>
 
-<!-- ─── Hero ─────────────────────────────────────────────── -->
+<!-- ═══ HERO ═════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
 
-  <!-- Animated planes -->
-  <div class="hero-plane hero-plane-1">
-    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-      <path d="M95 14 L5 2 L15 14 L5 26 Z M15 14 L40 20 L40 26 L50 22 L50 14 M40 8 L50 6 L50 14"/>
-    </svg>
-  </div>
-  <div class="hero-plane hero-plane-2">
-    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-      <path d="M95 14 L5 2 L15 14 L5 26 Z M15 14 L40 20 L40 26 L50 22 L50 14 M40 8 L50 6 L50 14"/>
-    </svg>
-  </div>
-  <div class="hero-plane hero-plane-3">
-    <svg viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-      <path d="M95 14 L5 2 L15 14 L5 26 Z M15 14 L40 20 L40 26 L50 22 L50 14 M40 8 L50 6 L50 14"/>
-    </svg>
+  <!-- Radar -->
+  <div class="hero-radar">
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-ring"></div>
+    <div class="radar-sweep"></div>
   </div>
 
-  <div class="container" style="width:100%;">
+  <div class="container" style="position:relative;z-index:2;width:100%;">
     <div class="hero-content">
       <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        A Member of Elitez Group of Companies
+        <span class="badge-dot"></span>
+        A Member of Elitez Group · Est. 2010 · Singapore
       </div>
-      <h1 class="hero-title">
-        Aviation HR Solutions<br/>
-        <span class="accent">Built for the Skies.</span>
-      </h1>
+
+      <div class="hero-title" id="hero-title">AVIATION</div>
+      <span class="hero-title-accent">WORKFORCE SOLUTIONS</span>
+
       <p class="hero-sub">
-        Singapore's specialist aviation workforce partner — providing end-to-end recruitment, MRO staffing, and HR management for airlines and aerospace companies across the region.
+        Precision-engineered HR for the aerospace frontier. We deploy elite technical talent to airlines and MRO operators across Asia-Pacific — with the speed, rigour, and scale of mission-critical operations.
       </p>
+
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">
-          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Get in Touch
+          <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Initiate Contact
         </a>
-        <a href="#services" class="btn btn-outline">Explore Services</a>
+        <a href="#services" class="btn btn-ghost">Explore Capabilities</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">1,488<span>+</span></div>
-          <div class="hero-stat-label">Skilled Candidates</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">270<span>+</span></div>
-          <div class="hero-stat-label">Local Aviation Professionals</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">5,000<span>+</span></div>
-          <div class="hero-stat-label">Aviation Network</div>
-        </div>
-        <div class="hero-stat-item">
-          <div class="hero-stat-num">8<span>wks</span></div>
-          <div class="hero-stat-label">Full Headcount Delivered</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Floating cards (desktop) -->
-  <div class="hero-visual">
-    <div class="hero-visual-inner">
-      <div class="hero-visual-card hero-visual-card-1">
-        <div class="hvc-label">ALSS Certified</div>
-        <div class="hvc-value">Top 11</div>
-        <div class="hvc-sub">Firms in Singapore</div>
-      </div>
-      <div class="hero-visual-card hero-visual-card-2">
-        <div class="hvc-label">CV Delivery</div>
-        <div class="hvc-value">1 Week</div>
-        <div class="hvc-sub">Rapid Response</div>
+      <div class="hero-hud">
+        <div class="hud-stat">
+          <div class="hud-num" data-count="1488">0</div>
+          <div class="hud-label">Skilled Candidates</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-num" data-count="270">0</div>
+          <div class="hud-label">Local Professionals</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-num" data-count="5000">0</div>
+          <div class="hud-label">Aviation Network</div>
+        </div>
+        <div class="hud-stat">
+          <div class="hud-num" style="color:#fff">8<span style="font-size:18px;color:var(--cyan)">wks</span></div>
+          <div class="hud-label">Full Headcount Delivered</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Trust Bar ──────────────────────────────────────────── -->
+<!-- ═══ TRUST TICKER ═════════════════════════════════════════ -->
 <div id="trust">
-  <div class="container">
-    <div class="trust-inner">
-      <span class="trust-label">Trusted by</span>
-      <div class="trust-items">
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          GASCA
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          Fokker
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          MOM Approved
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          ISO 9001:2015
-        </div>
-        <div class="trust-item">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          HCP Employment Agency
-        </div>
-      </div>
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <!-- duplicated for seamless loop -->
+      <div class="ticker-item"><span class="ticker-dot"></span> ALSS Approved · Ministry of Manpower</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Endorsed by GASCA &amp; Fokker</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> ISO 9001:2015 Certified</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Human Capital Partnership · MOM</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Data Protection Trustmark · DPTM</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> SG Cyber Safe · Cyber Essentials</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> EcoVadis Bronze · Sustainability</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> One of 11 ALSS Firms in Singapore</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> First CV Delivered Within 1 Week</div>
+      <!-- duplicate -->
+      <div class="ticker-item"><span class="ticker-dot"></span> ALSS Approved · Ministry of Manpower</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Endorsed by GASCA &amp; Fokker</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> ISO 9001:2015 Certified</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Human Capital Partnership · MOM</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> Data Protection Trustmark · DPTM</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> SG Cyber Safe · Cyber Essentials</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> EcoVadis Bronze · Sustainability</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> One of 11 ALSS Firms in Singapore</div>
+      <div class="ticker-item"><span class="ticker-dot"></span> First CV Delivered Within 1 Week</div>
     </div>
   </div>
 </div>
 
-<!-- ─── About ──────────────────────────────────────────────── -->
+<!-- ═══ ABOUT ════════════════════════════════════════════════ -->
 <section id="about" class="section">
   <div class="container">
     <div class="about-grid">
-      <div class="about-image-wrap">
-        <div class="about-image-main">
-          <!-- Placeholder — replace src with actual image -->
-          <svg viewBox="0 0 120 80" style="width:80%;opacity:.15;fill:#fff" xmlns="http://www.w3.org/2000/svg">
-            <path d="M110 38L10 10l20 28L10 66z M30 38l50 16v14l20-10V38 M50 22l20-6v16"/>
-            <rect x="0" y="70" width="120" height="4" rx="2" opacity=".3"/>
-            <circle cx="20" cy="72" r="6"/>
-            <circle cx="100" cy="72" r="6"/>
-          </svg>
-        </div>
-        <div class="about-alss-badge">
-          <div class="about-alss-badge-icon">✈</div>
-          <strong>ALSS Certified</strong><br/>
-          One of only 11 approved firms in Singapore
-        </div>
-        <div class="about-image-badge">
-          <div class="about-image-badge-num">2010</div>
-          <div class="about-image-badge-text">Elitez Group<br/>Founded</div>
+
+      <div class="about-visual">
+        <div class="about-hex-bg"></div>
+        <div class="about-panel glass" style="clip-path:none;">
+          <div class="about-badge">LIVE DATA</div>
+          <div class="about-panel-label">// System Intelligence</div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">ALSS Certification</span>
+            <span class="about-panel-stat-val">ACTIVE</span>
+          </div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">Candidate Database</span>
+            <span class="about-panel-stat-val">1,488+</span>
+          </div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">Delivery Lead Time</span>
+            <span class="about-panel-stat-val">≤ 1 WK</span>
+          </div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">Approved Firms (SG)</span>
+            <span class="about-panel-stat-val">11 TOTAL</span>
+          </div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">Regional Reach</span>
+            <span class="about-panel-stat-val">6 MARKETS</span>
+          </div>
+          <div class="about-panel-stat">
+            <span class="about-panel-stat-label">Revenue Growth (5yr)</span>
+            <span class="about-panel-stat-val">+45%</span>
+          </div>
         </div>
       </div>
+
       <div>
-        <div class="section-label">About Us</div>
-        <h2 class="section-title">Powering Aviation<br/><span>Workforce Excellence</span></h2>
-        <p class="section-body">
-          Established in 2010, Elitez Group evolved from a regional HR solutions firm into a comprehensive workforce specialist. Elitez Aviation was purpose-built to meet the unique demands of the aviation sector — delivering tailored HR solutions for airlines and major Maintenance, Repair, and Overhaul (MRO) companies, with an emphasis on quality and international standards.
+        <div class="label">About Elitez Aviation</div>
+        <h2 class="heading">POWERING THE<br/><span class="hi">AEROSPACE FRONTIER</span></h2>
+        <p class="body-text">
+          Established as part of the Elitez Group — a regional HR powerhouse since 2010 — Elitez Aviation was engineered specifically for the demands of the aerospace sector. We deliver precision workforce solutions to airlines and MRO operators, adhering to the most rigorous international standards.
         </p>
-        <div class="about-highlights">
-          <div class="about-highlight">
-            <div class="about-highlight-icon">
-              <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.72C7.01 18.47 6 15.34 6 12c0-4.08 3.05-7.44 7-7.93V2.05z"/></svg>
+        <ul class="about-list">
+          <li>
+            <div class="about-list-icon"><svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95z"/></svg></div>
+            <div>
+              <strong>Rapid Deployment Architecture</strong>
+              <span>Full client headcount fulfilled in 8 weeks — from candidate sourcing to IPA approvals and onboarding.</span>
             </div>
-            <div class="about-highlight-text">
-              <strong>Rapid Growth & Proven Delivery</strong>
-              <span>Met full client headcount requirements in just 8 weeks — from IPA applications to onboarding.</span>
+          </li>
+          <li>
+            <div class="about-list-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div>
+              <strong>ALSS Certified — Top 11 in Singapore</strong>
+              <span>Officially admitted to the Aerospace Labour Supply Scheme under the Ministry of Manpower.</span>
             </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon">
-              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </li>
+          <li>
+            <div class="about-list-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
+            <div>
+              <strong>Regional Scalability Engine</strong>
+              <span>Based in Singapore, expanding into Hong Kong, the Middle East, and beyond — adapting to global aviation demands.</span>
             </div>
-            <div class="about-highlight-text">
-              <strong>Expansive Regional Talent Pool</strong>
-              <span>1,488 skilled candidates from the Philippines, India, Malaysia, and Myanmar, plus 270+ local aviation professionals.</span>
-            </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-            </div>
-            <div class="about-highlight-text">
-              <strong>Aerospace Labour Supply Scheme (ALSS)</strong>
-              <span>One of only 11 firms in Singapore admitted to the prestigious ALSS programme under the Ministry of Manpower.</span>
-            </div>
-          </div>
-          <div class="about-highlight">
-            <div class="about-highlight-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
-            <div class="about-highlight-text">
-              <strong>Regional Scalability</strong>
-              <span>Based in Singapore, expanding into Hong Kong, the Middle East, and beyond — adapting to international aviation demands.</span>
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ─── Stats ──────────────────────────────────────────────── -->
-<section id="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">1,488<span>+</span></div>
-        <div class="stat-label">Overseas Candidates</div>
-        <div class="stat-sublabel">PH · IN · MY · MM</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">270<span>+</span></div>
-        <div class="stat-label">Local Aviation Professionals</div>
-        <div class="stat-sublabel">Singapore-based</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">5,000<span>+</span></div>
-        <div class="stat-label">Aviation Network</div>
-        <div class="stat-sublabel">Technical Professionals</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num"><span>#</span>11</div>
-        <div class="stat-label">ALSS Approved Firms</div>
-        <div class="stat-sublabel">Only 11 in Singapore</div>
-      </div>
+<!-- ═══ STATS ═════════════════════════════════════════════════ -->
+<section id="stats" style="padding:0;">
+  <div class="stats-row">
+    <div class="stat-block">
+      <div class="stat-num" data-count="1488"><span class="unit">0</span></div>
+      <div class="stat-label">Overseas Candidates</div>
+      <div class="stat-sub">PH · IN · MY · MM</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num" data-count="270"><span class="unit">0</span><span class="unit">+</span></div>
+      <div class="stat-label">Local Professionals</div>
+      <div class="stat-sub">Singapore-based</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num" data-count="5000"><span class="unit">0</span><span class="unit">+</span></div>
+      <div class="stat-label">Aviation Network</div>
+      <div class="stat-sub">Technical Professionals</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">#<span class="unit">11</span></div>
+      <div class="stat-label">ALSS Approved</div>
+      <div class="stat-sub">Only 11 in Singapore</div>
     </div>
   </div>
 </section>
 
-<!-- ─── Services ──────────────────────────────────────────── -->
+<!-- ═══ SERVICES ══════════════════════════════════════════════ -->
 <section id="services" class="section">
   <div class="container">
     <div class="services-header">
-      <div class="section-label">What We Offer</div>
-      <h2 class="section-title">Comprehensive <span>HR Services</span></h2>
-      <p class="section-body">From technical aviation recruitment to executive search and full HR management — we cover every layer of your workforce needs.</p>
+      <div class="label" style="justify-content:center;">Capabilities</div>
+      <h2 class="heading" style="text-align:center;">MISSION <span class="hi">CAPABILITIES</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">End-to-end aviation HR solutions engineered for operational precision — from technical recruitment to executive search and full workforce management.</p>
     </div>
-    <div class="services-tabs">
+    <div class="services-grid">
 
-      <div class="service-card">
-        <div class="service-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-        </div>
-        <div class="service-card-title">Aviation Recruitment</div>
-        <ul class="service-list">
+      <div class="svc-card">
+        <div class="svc-num">// 01</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
+        <div class="svc-title">Aviation Recruitment</div>
+        <ul class="svc-list">
           <li>Aircraft Technician</li>
           <li>NDT Inspector</li>
           <li>CNC Machinist</li>
           <li>General Worker</li>
           <li>MRO Support Roles</li>
         </ul>
+        <div class="svc-bg-num">01</div>
       </div>
 
-      <div class="service-card">
-        <div class="service-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.54 1 13.18 1c-1.15 0-2.17.37-2.93 1.14L9 3.37 7.75 2.14C6.99 1.37 5.97 1 4.82 1 2.46 1 0 2.54 0 4.67c0 .45.11.89.18 1.33H0v2h20v-2zm-9.4-1.41c.48-.51 1.12-.76 1.85-.76 1.1 0 2.55.66 2.55 1.84 0 .45-.1.88-.26 1.33h-4.63l.49-2.41zM2 9v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9H2zm9 11H5v-8h6v8zm8 0h-6v-8h6v8z"/></svg>
-        </div>
-        <div class="service-card-title">Key Accounts Recruitment</div>
-        <ul class="service-list">
+      <div class="svc-card">
+        <div class="svc-num">// 02</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.54 1 13.18 1c-1.15 0-2.17.37-2.93 1.14L9 3.37 7.75 2.14C6.99 1.37 5.97 1 4.82 1 2.46 1 0 2.54 0 4.67c0 .45.11.89.18 1.33H0v2h20v-2z"/></svg></div>
+        <div class="svc-title">Key Accounts Recruitment</div>
+        <ul class="svc-list">
           <li>Executive Search</li>
           <li>Confidential Search</li>
           <li>Regional Hiring</li>
           <li>Mass Recruitment</li>
         </ul>
+        <div class="svc-bg-num">02</div>
       </div>
 
-      <div class="service-card">
-        <div class="service-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
-        </div>
-        <div class="service-card-title">HRM Services</div>
-        <ul class="service-list">
+      <div class="svc-card">
+        <div class="svc-num">// 03</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+        <div class="svc-title">HRM Services</div>
+        <ul class="svc-list">
           <li>Parked Payroll</li>
           <li>Payroll Outsourcing</li>
-          <li>HR Consultancy Services</li>
+          <li>HR Consultancy</li>
           <li>Work Pass Management</li>
           <li>Employment Contracts</li>
         </ul>
+        <div class="svc-bg-num">03</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ─── Aviation Expertise ─────────────────────────────────── -->
-<section id="expertise" class="section" style="background:var(--light);">
+<!-- ═══ EXPERTISE ═════════════════════════════════════════════ -->
+<section id="expertise" class="section">
   <div class="container">
-    <div class="expertise-grid">
+    <div class="expertise-split">
       <div>
-        <div class="section-label">Our Expertise</div>
-        <h2 class="section-title">Deep Aviation<br/><span>Knowledge</span></h2>
-        <p class="section-body">
-          With a deep understanding of the aerospace landscape, industry regulations, and emerging technologies, our team has the expertise to identify candidates with the specialized skills and knowledge required to excel in this dynamic field.
-        </p>
-        <div class="expertise-roles">
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            A&C (Aircraft & Component)
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Cabin
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Avionics
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Composite
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Aircraft Planner
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Sheetmetal
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            NDT Inspector
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            QC Inspector
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            CNC Machinist
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Storekeeper
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            General Operator
-          </div>
-          <div class="role-tag">
-            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-            Aircraft Cleaner
-          </div>
+        <div class="label">Specialisation</div>
+        <h2 class="heading">DEEP AVIATION<br/><span class="hi">INTELLIGENCE</span></h2>
+        <p class="body-text">Our team operates at the intersection of aerospace engineering and human capital strategy — covering every technical discipline from airframe to avionics.</p>
+        <div class="roles-grid">
+          <div class="role-chip">A&amp;C</div>
+          <div class="role-chip">Cabin</div>
+          <div class="role-chip">Avionics</div>
+          <div class="role-chip">Composite</div>
+          <div class="role-chip">Aircraft Planner</div>
+          <div class="role-chip">Sheetmetal</div>
+          <div class="role-chip">NDT Inspector</div>
+          <div class="role-chip">QC Inspector</div>
+          <div class="role-chip">CNC Machinist</div>
+          <div class="role-chip">Storekeeper</div>
+          <div class="role-chip">General Operator</div>
+          <div class="role-chip">Aircraft Cleaner</div>
         </div>
       </div>
-      <div class="expertise-visual">
-        <div class="expertise-visual-title">Human Resource Services</div>
-        <table class="expertise-table">
+      <div class="expertise-table-wrap">
+        <table class="exp-table">
           <thead>
             <tr>
-              <th>Aviation Recruitment</th>
+              <th>Aviation Rec.</th>
               <th>Key Accounts</th>
-              <th>HRM Services</th>
+              <th>HRM</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Aircraft Technician</td>
-              <td>Executive Search</td>
-              <td>Parked Payroll</td>
-            </tr>
-            <tr>
-              <td>NDT Inspector</td>
-              <td>Confidential Search</td>
-              <td>Payroll Outsourcing</td>
-            </tr>
-            <tr>
-              <td>CNC Machinist</td>
-              <td>Regional Hiring</td>
-              <td>HR Consultancy</td>
-            </tr>
-            <tr>
-              <td>General Worker</td>
-              <td>Mass Recruitment</td>
-              <td>—</td>
-            </tr>
+            <tr><td>Aircraft Technician</td><td>Executive Search</td><td>Parked Payroll</td></tr>
+            <tr><td>NDT Inspector</td><td>Confidential Search</td><td>Payroll Outsourcing</td></tr>
+            <tr><td>CNC Machinist</td><td>Regional Hiring</td><td>HR Consultancy</td></tr>
+            <tr><td>General Worker</td><td>Mass Recruitment</td><td>Work Pass Mgmt</td></tr>
           </tbody>
         </table>
       </div>
@@ -1474,176 +1580,154 @@
   </div>
 </section>
 
-<!-- ─── Recruitment Flow ───────────────────────────────────── -->
-<section id="flow" class="section">
+<!-- ═══ FLOW ══════════════════════════════════════════════════ -->
+<section id="flow" class="section" style="background:var(--bg2);">
   <div class="container">
     <div class="flow-header">
-      <div class="section-label">How We Work</div>
-      <h2 class="section-title">Our <span>Recruitment Flow</span></h2>
-      <p class="section-body" style="margin:0 auto;">A rigorous, end-to-end process ensuring only the most qualified aviation professionals reach your team.</p>
+      <div class="label" style="justify-content:center;">Protocol</div>
+      <h2 class="heading" style="text-align:center;">RECRUITMENT <span class="hi">PROTOCOL</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">A six-phase operational system engineered to identify, validate, and deploy only the highest-calibre aviation professionals.</p>
     </div>
     <div class="flow-grid">
 
       <div class="flow-card">
-        <div class="flow-num">01</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
-        </div>
-        <div class="flow-title">Needs Analysis</div>
-        <p class="flow-desc">We thoroughly understand your specific requirements — role responsibilities, required skill sets, and organisational culture — before starting.</p>
+        <div class="flow-card-num">PHASE 01</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1z"/></svg></div>
+        <div class="flow-card-title">Needs Analysis</div>
+        <p class="flow-card-desc">Full brief on the role, required skill sets, regulatory certifications, and organisational culture before any search begins.</p>
+        <div class="flow-card-bg">01</div>
       </div>
 
       <div class="flow-card">
-        <div class="flow-num">02</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        </div>
-        <div class="flow-title">Candidate Sourcing</div>
-        <p class="flow-desc">We tap into our extensive database of 5,000+ aviation professionals and use targeted search strategies across multiple regions to identify top talent.</p>
+        <div class="flow-card-num">PHASE 02</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5z"/></svg></div>
+        <div class="flow-card-title">Candidate Sourcing</div>
+        <p class="flow-card-desc">We activate our 5,000+ network and regional databases across six sourcing markets to surface the highest-potential candidates.</p>
+        <div class="flow-card-bg">02</div>
       </div>
 
       <div class="flow-card">
-        <div class="flow-num">03</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        </div>
-        <div class="flow-title">Screening & Shortlisting</div>
-        <p class="flow-desc">We carefully screen candidates to assess qualifications, experience, and alignment — ensuring only the best fit moves forward in the process.</p>
+        <div class="flow-card-num">PHASE 03</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="flow-card-title">Screening & Shortlisting</div>
+        <p class="flow-card-desc">Multi-layer screening on qualifications, experience, and alignment — only the top tier advances for client review.</p>
+        <div class="flow-card-bg">03</div>
       </div>
 
       <div class="flow-card">
-        <div class="flow-num">04</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        </div>
-        <div class="flow-title">Interviews & Assessments</div>
-        <p class="flow-desc">We facilitate interviews between you and shortlisted candidates — enabling both parties to assess suitability and cultural fit within your organisation.</p>
+        <div class="flow-card-num">PHASE 04</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
+        <div class="flow-card-title">Interviews & Assessments</div>
+        <p class="flow-card-desc">We coordinate structured interviews, enabling clients to evaluate candidates for technical fit and cultural alignment.</p>
+        <div class="flow-card-bg">04</div>
       </div>
 
       <div class="flow-card">
-        <div class="flow-num">05</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-        </div>
-        <div class="flow-title">Skill Trade Tests</div>
-        <p class="flow-desc">To validate practical abilities, we administer skill trade tests on-site or remotely — ensuring candidates meet the required technical standards for the role.</p>
+        <div class="flow-card-num">PHASE 05</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+        <div class="flow-card-title">Skill Trade Tests</div>
+        <p class="flow-card-desc">On-site or remote skill trade tests validate practical abilities against required technical standards before finalisation.</p>
+        <div class="flow-card-bg">05</div>
       </div>
 
       <div class="flow-card">
-        <div class="flow-num">06</div>
-        <div class="flow-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        </div>
-        <div class="flow-title">Ongoing HR Support & Onboarding</div>
-        <p class="flow-desc">We provide continuous HR support throughout the process, ensuring smooth onboarding and fostering a positive, long-term relationship between all parties.</p>
+        <div class="flow-card-num">PHASE 06</div>
+        <div class="flow-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <div class="flow-card-title">Onboarding & HR Support</div>
+        <p class="flow-card-desc">Continuous HR support from offer to day one and beyond — ensuring seamless onboarding and long-term workforce stability.</p>
+        <div class="flow-card-bg">06</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ─── Why Choose Us ─────────────────────────────────────── -->
-<section id="why" class="section">
+<!-- ═══ WHY US ══════════════════════════════════════════════════ -->
+<section id="why" class="section" style="background:var(--bg);">
   <div class="container">
     <div class="why-header">
-      <div class="section-label">Why Elitez Aviation</div>
-      <h2 class="section-title">The Reasons to<br/><span>Choose Us</span></h2>
-      <p class="section-body" style="margin:0 auto;">We combine deep aviation expertise, a vast regional network, and rigorous quality standards to be your most trusted workforce partner.</p>
+      <div class="label" style="justify-content:center;">Advantages</div>
+      <h2 class="heading" style="text-align:center;">MISSION <span class="hi">ADVANTAGES</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">Six core differentiators that make Elitez Aviation the partner of choice for aerospace workforce demands.</p>
     </div>
     <div class="why-grid">
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-        </div>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
         <div class="why-title">Custom HR Solutions</div>
-        <p class="why-desc">Customised HR services designed for your specific operational needs — from temporary staffing to full-scale workforce management, flexible and scalable.</p>
+        <p class="why-desc">Modular HR services designed to your operational parameters — from single placements to full-scale workforce management programmes.</p>
       </div>
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
-        </div>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
         <div class="why-title">Industry Expertise</div>
-        <p class="why-desc">With years of experience in aviation, we understand the unique needs of airlines and MROs. Our rapid response ensures the first CV is delivered within 1 week.</p>
+        <p class="why-desc">Years of aviation-sector intelligence means we understand MRO and airline demands at a granular level. First CV within 1 week.</p>
       </div>
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-        </div>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
         <div class="why-title">Quality Sourcing</div>
-        <p class="why-desc">All our hires meet internationally recognised aviation standards — FAA/EASA certifications for technical roles, and IATA/ICAO safety training for operational staff.</p>
+        <p class="why-desc">Every hire meets international standards — FAA/EASA certifications for technical roles; IATA/ICAO safety training for operational staff.</p>
       </div>
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-        </div>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
         <div class="why-title">Flexible AOG Model</div>
-        <p class="why-desc">Our Aircraft on Ground (AOG) Manpower Contract lets you quickly buy into temporary manpower services during critical downtimes or emergencies — scale as needed.</p>
+        <p class="why-desc">Aircraft on Ground (AOG) Manpower Contract — rapid temporary workforce deployment during critical downtimes or emergencies.</p>
       </div>
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
-        <div class="why-title">Regional Presence & Mass Hiring</div>
-        <p class="why-desc">Our extensive network across Indonesia, India, Malaysia, and the Philippines enables scalable, end-to-end hiring — including large-scale mass recruitment projects.</p>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
+        <div class="why-title">Regional Network & Mass Hiring</div>
+        <p class="why-desc">Six-market sourcing network across SE Asia enables scalable mass recruitment — end-to-end, without complications.</p>
       </div>
 
       <div class="why-card">
-        <div class="why-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        </div>
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
         <div class="why-title">After-Hire Care</div>
-        <p class="why-desc">Every client gets a dedicated Welfare Manager plus a robust retention programme to minimise turnover — ensuring a stable, committed workforce for your operations.</p>
+        <p class="why-desc">Dedicated Welfare Manager for every client engagement, plus a robust retention programme to minimise turnover and preserve operational stability.</p>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ─── ALSS Highlight ─────────────────────────────────────── -->
+<!-- ═══ ALSS ═══════════════════════════════════════════════════ -->
 <section id="alss">
-  <div class="container">
-    <div class="alss-inner">
-      <div class="alss-content">
-        <div class="section-label">A Significant Milestone</div>
-        <h2 class="section-title">Aerospace Labour<br/>Supply Scheme</h2>
-        <p class="section-body" style="margin-bottom:24px;">
-          Elitez Aviation Pte Ltd has achieved a significant milestone by being officially admitted into the Aerospace Labour Supply Scheme (ALSS) under the Ministry of Manpower — held by only 11 firms in Singapore.
-        </p>
-        <p class="section-body">
-          This recognition reflects our commitment to providing high-quality workforce solutions to the aerospace industry. Endorsed by industry leaders GASCA and Fokker, our proven track record speaks for itself.
-        </p>
-      </div>
-      <div class="alss-highlight-box">
-        <div class="alss-stat">
-          <div class="alss-stat-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-          </div>
-          <div>
-            <div class="alss-stat-num">11</div>
-            <div class="alss-stat-label">Only 11 ALSS-approved firms in Singapore</div>
-          </div>
+  <div class="alss-wrap">
+    <div class="container">
+      <div class="alss-inner">
+        <div>
+          <div class="label">Certification</div>
+          <h2 class="heading">AEROSPACE LABOUR<br/><span class="hi">SUPPLY SCHEME</span></h2>
+          <p class="body-text" style="margin-bottom:24px;">
+            Elitez Aviation Pte Ltd has achieved a landmark milestone — officially admitted into Singapore's Aerospace Labour Supply Scheme (ALSS) under the Ministry of Manpower.
+          </p>
+          <p class="body-text">
+            Held by only 11 firms in Singapore, this accreditation reflects our commitment to the highest standards of aerospace workforce provision. Endorsed by GASCA and Fokker before we even obtained the licence, our track record speaks first.
+          </p>
         </div>
-        <div class="alss-stat">
-          <div class="alss-stat-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <div class="alss-data">
+          <div class="alss-row">
+            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+            <div>
+              <div class="alss-row-val">11 Firms</div>
+              <div class="alss-row-label">Only 11 ALSS-approved suppliers in Singapore</div>
+            </div>
           </div>
-          <div>
-            <div class="alss-stat-num">15/07/2024</div>
-            <div class="alss-stat-label">Date of ALSS approval by MOM</div>
+          <div class="alss-row">
+            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            <div>
+              <div class="alss-row-val">15 Jul 2024</div>
+              <div class="alss-row-label">MOM ALSS approval date</div>
+            </div>
           </div>
-        </div>
-        <div class="alss-stat">
-          <div class="alss-stat-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.54 1 13.18 1c-1.15 0-2.17.37-2.93 1.14L9 3.37 7.75 2.14C6.99 1.37 5.97 1 4.82 1 2.46 1 0 2.54 0 4.67c0 .45.11.89.18 1.33H0v2h20v-2z"/></svg>
-          </div>
-          <div>
-            <div class="alss-stat-num">GASCA & Fokker</div>
-            <div class="alss-stat-label">Endorsed by leading aviation companies</div>
+          <div class="alss-row">
+            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.54 1 13.18 1c-1.15 0-2.17.37-2.93 1.14L9 3.37 7.75 2.14C6.99 1.37 5.97 1 4.82 1 2.46 1 0 2.54 0 4.67c0 .45.11.89.18 1.33H0v2h20v-2z"/></svg></div>
+            <div>
+              <div class="alss-row-val">GASCA · Fokker</div>
+              <div class="alss-row-label">Industry leaders who endorsed us pre-certification</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1651,242 +1735,196 @@
   </div>
 </section>
 
-<!-- ─── Regional Presence ──────────────────────────────────── -->
+<!-- ═══ REGIONAL ════════════════════════════════════════════════ -->
 <section id="regional" class="section">
   <div class="container">
     <div class="regional-header">
-      <div class="section-label">Our Reach</div>
-      <h2 class="section-title">Regional <span>Talent Network</span></h2>
-      <p class="section-body" style="margin:0 auto 48px;">Our candidates are sourced from various regions, ensuring a rich pool of talent with specialised skillsets for aviation — varied backgrounds, experiences, and nationalities.</p>
+      <div class="label" style="justify-content:center;">Network Coverage</div>
+      <h2 class="heading" style="text-align:center;">REGIONAL <span class="hi">TALENT GRID</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto 48px;">Six-market sourcing infrastructure providing access to diverse, qualified aviation talent across the Asia-Pacific region.</p>
     </div>
     <div class="regional-grid">
-      <div class="region-card">
-        <div class="region-flag">🇸🇬</div>
-        <div class="region-name">Singapore</div>
-        <div class="region-sub">HQ & Operations</div>
-      </div>
-      <div class="region-card">
-        <div class="region-flag">🇵🇭</div>
-        <div class="region-name">Philippines</div>
-        <div class="region-sub">Candidate Sourcing</div>
-      </div>
-      <div class="region-card">
-        <div class="region-flag">🇮🇳</div>
-        <div class="region-name">India</div>
-        <div class="region-sub">Candidate Sourcing</div>
-      </div>
-      <div class="region-card">
-        <div class="region-flag">🇲🇾</div>
-        <div class="region-name">Malaysia</div>
-        <div class="region-sub">Candidate Sourcing</div>
-      </div>
-      <div class="region-card">
-        <div class="region-flag">🇲🇲</div>
-        <div class="region-name">Myanmar</div>
-        <div class="region-sub">Candidate Sourcing</div>
-      </div>
-      <div class="region-card">
-        <div class="region-flag">🇭🇰</div>
-        <div class="region-name">Hong Kong</div>
-        <div class="region-sub">Expansion Market</div>
-      </div>
+      <div class="region-card"><div class="region-flag">🇸🇬</div><div class="region-name">Singapore</div><div class="region-sub">HQ · Operations</div></div>
+      <div class="region-card"><div class="region-flag">🇵🇭</div><div class="region-name">Philippines</div><div class="region-sub">Talent Sourcing</div></div>
+      <div class="region-card"><div class="region-flag">🇮🇳</div><div class="region-name">India</div><div class="region-sub">Talent Sourcing</div></div>
+      <div class="region-card"><div class="region-flag">🇲🇾</div><div class="region-name">Malaysia</div><div class="region-sub">Talent Sourcing</div></div>
+      <div class="region-card"><div class="region-flag">🇲🇲</div><div class="region-name">Myanmar</div><div class="region-sub">Talent Sourcing</div></div>
+      <div class="region-card"><div class="region-flag">🇭🇰</div><div class="region-name">Hong Kong</div><div class="region-sub">Expansion Market</div></div>
     </div>
   </div>
 </section>
 
-<!-- ─── End-to-End Services ────────────────────────────────── -->
-<section id="end-to-end" class="section">
+<!-- ═══ END-TO-END ══════════════════════════════════════════════ -->
+<section id="e2e" class="section" style="background:var(--bg2);">
   <div class="container">
     <div class="e2e-header">
-      <div class="section-label">Complete Coverage</div>
-      <h2 class="section-title">Our <span>End-to-End Services</span></h2>
-      <p class="section-body" style="margin:0 auto;">From stringent screening to comprehensive training programmes, we ensure top-notch quality in every aspect of your workforce management.</p>
+      <div class="label" style="justify-content:center;">Full Spectrum</div>
+      <h2 class="heading" style="text-align:center;">END-TO-END <span class="hi">SERVICES</span></h2>
     </div>
     <div class="e2e-grid">
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
-        </div>
-        <div class="e2e-title">Exacting Screening Process</div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg></div>
+        <div class="e2e-title">Screening Process</div>
         <ul class="e2e-list">
-          <li>In-house experienced technical consultant</li>
+          <li>In-house technical consultant</li>
           <li>Robust candidate database</li>
-          <li>Strong overseas partners</li>
+          <li>Overseas partner network</li>
         </ul>
       </div>
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
-        </div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
         <div class="e2e-title">Training</div>
         <ul class="e2e-list">
           <li>Supplementary training provided</li>
-          <li>Career development of workers</li>
+          <li>Career development pathways</li>
         </ul>
       </div>
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
-        <div class="e2e-title">Quality</div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div class="e2e-title">Quality Assurance</div>
         <ul class="e2e-list">
           <li>Large pool of technical workers</li>
           <li>Supplied to top airlines & MROs</li>
         </ul>
       </div>
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        </div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
         <div class="e2e-title">Staff Engagement</div>
         <ul class="e2e-list">
-          <li>Provision of dedicated welfare manager</li>
+          <li>Dedicated welfare manager</li>
           <li>Robust retention programme</li>
         </ul>
       </div>
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
-        </div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
         <div class="e2e-title">Administrative Support</div>
         <ul class="e2e-list">
-          <li>Payroll & work pass management</li>
+          <li>Payroll & work pass</li>
           <li>Employment contracts</li>
           <li>Medical coverage</li>
         </ul>
       </div>
       <div class="e2e-card">
-        <div class="e2e-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </div>
+        <div class="e2e-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
         <div class="e2e-title">Accommodation</div>
         <ul class="e2e-list">
-          <li>Sourced and arranged by our team</li>
-          <li>Ensures easy access to work sites</li>
+          <li>Sourced and arranged</li>
+          <li>Accessible to work sites</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Team ───────────────────────────────────────────────── -->
-<section id="team" class="section">
+<!-- ═══ TEAM ═════════════════════════════════════════════════════ -->
+<section id="team" class="section" style="background:var(--bg);">
   <div class="container">
     <div class="team-header">
-      <div class="section-label">Our Expert</div>
-      <h2 class="section-title">Meet Your <span>Aviation Recruiter</span></h2>
+      <div class="label" style="justify-content:center;">Command</div>
+      <h2 class="heading" style="text-align:center;">MEET YOUR <span class="hi">AVIATION SPECIALIST</span></h2>
     </div>
-    <div class="team-card">
-      <div class="team-card-photo">
-        <div class="team-card-photo-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
+    <div class="team-wrap">
+      <div class="team-photo">
+        <svg class="team-photo-hex" viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="100,10 190,55 190,175 100,220 10,175 10,55" stroke="rgba(0,212,255,1)" stroke-width="1" fill="none"/>
+          <polygon points="100,30 175,67 175,163 100,200 25,163 25,67" stroke="rgba(0,212,255,1)" stroke-width="0.5" fill="none"/>
+        </svg>
+        <div class="team-photo-avatar">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
-        <div class="team-card-name-bar">
-          <div class="team-card-name">Jerry Chng</div>
-          <div class="team-card-role">Senior Manager, Aviation Recruitment</div>
+        <div class="team-name-plate">
+          <div class="team-name">Jerry Chng</div>
+          <div class="team-role">Senior Manager · Aviation</div>
         </div>
       </div>
-      <div class="team-card-info">
-        <div class="team-stats">
-          <div class="team-stat">
-            <div class="team-stat-bar-wrap">
-              <div class="team-stat-label">Aviation Recruitment</div>
-              <div class="team-stat-bar"><div class="team-stat-fill" style="width:100%"></div></div>
+      <div class="team-info">
+        <div class="team-bars">
+          <div class="team-bar-item">
+            <div class="team-bar-header">
+              <span class="team-bar-label">Aviation Recruitment</span>
+              <span class="team-bar-val">12 YRS</span>
             </div>
-            <div class="team-stat-years">12 yrs</div>
+            <div class="team-bar-track"><div class="team-bar-fill" style="width:100%"></div></div>
           </div>
-          <div class="team-stat">
-            <div class="team-stat-bar-wrap">
-              <div class="team-stat-label">Tender Specification</div>
-              <div class="team-stat-bar"><div class="team-stat-fill" style="width:67%"></div></div>
+          <div class="team-bar-item">
+            <div class="team-bar-header">
+              <span class="team-bar-label">Tender Specification</span>
+              <span class="team-bar-val">8 YRS</span>
             </div>
-            <div class="team-stat-years">8 yrs</div>
+            <div class="team-bar-track"><div class="team-bar-fill" style="width:67%"></div></div>
           </div>
-          <div class="team-stat">
-            <div class="team-stat-bar-wrap">
-              <div class="team-stat-label">Project Management</div>
-              <div class="team-stat-bar"><div class="team-stat-fill" style="width:25%"></div></div>
+          <div class="team-bar-item">
+            <div class="team-bar-header">
+              <span class="team-bar-label">Project Management</span>
+              <span class="team-bar-val">3+ YRS</span>
             </div>
-            <div class="team-stat-years">3+ yrs</div>
+            <div class="team-bar-track"><div class="team-bar-fill" style="width:25%"></div></div>
           </div>
         </div>
         <p class="team-bio">
-          Jerry has been involved in account management for <strong>15 years</strong>, working closely with managers and senior management personnel. He has extensive experience in the Government Sector across Ops and Planning, Investigation, Intelligent Ops, and A&F Audit — giving him a deep appreciation for quality service delivery. He holds a <strong>BSc in Entrepreneurship and Management</strong> from the University of Wales (2014).
+          Jerry brings <strong>15 years of account management</strong> experience engaging with managers and senior leadership. He has served in the Government Sector across Ops &amp; Planning, Investigation, and Intelligent Ops — giving him a rigorous, mission-critical approach to every client engagement.
         </p>
+        <div class="team-edu">BSc Entrepreneurship &amp; Management · University of Wales · 2014</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Accreditations ────────────────────────────────────── -->
-<section id="accreditation" class="section" style="background:var(--light);">
+<!-- ═══ ACCREDITATIONS ═══════════════════════════════════════════ -->
+<section id="accreditation" class="section" style="background:var(--bg2);">
   <div class="container">
     <div class="accred-header">
-      <div class="section-label">Recognised & Certified</div>
-      <h2 class="section-title">Our <span>Accreditations</span></h2>
-      <p class="section-body" style="margin:0 auto;">Backed by rigorous certifications and recognised by government bodies, we uphold the highest standards in every engagement.</p>
+      <div class="label" style="justify-content:center;">Certifications</div>
+      <h2 class="heading" style="text-align:center;">VERIFIED <span class="hi">CREDENTIALS</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">Recognised by government authorities and international certification bodies — our credentials are the foundation of client trust.</p>
     </div>
     <div class="accred-grid">
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg></div>
         <div>
           <div class="accred-name">Human Capital Partnership</div>
-          <p class="accred-desc">Awarded by the Ministry of Manpower (MOM), National Trades Union Congress, and Singapore National Employers Federation.</p>
+          <p class="accred-desc">Awarded by MOM, National Trades Union Congress, and Singapore National Employers Federation.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
         <div>
           <div class="accred-name">ISO 9001:2015 Certified</div>
-          <p class="accred-desc">Based on quality management principles including strong customer focus, top management commitment, and continual improvement.</p>
+          <p class="accred-desc">Quality management principles — strong customer focus, top management commitment, and continual improvement.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
         <div>
-          <div class="accred-name">Data Protection Trustmark (DPTM)</div>
-          <p class="accred-desc">Demonstrates compliance with the PDPA, signaling sound data protection practices to customers and business partners.</p>
+          <div class="accred-name">Data Protection Trustmark</div>
+          <p class="accred-desc">DPTM demonstrates PDPA compliance — signalling sound data governance to clients and partners.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg></div>
         <div>
-          <div class="accred-name">SG Cyber Safe (Cyber Essentials)</div>
-          <p class="accred-desc">Recognises enterprises that have implemented good cyber hygiene practices to safeguard their systems and customers.</p>
+          <div class="accred-name">SG Cyber Safe</div>
+          <p class="accred-desc">Cyber Essentials Mark — good cyber hygiene practices that safeguard systems and customer data.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c4 0 4-2 8-2s4 2 8 2v-2c-4 0-4-2-8-2-1.26 0-2.01.3-2.87.5C14.91 11.2 17.35 9.2 21 9V7c-1.5 0-2.89.28-4 .72V8z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c4 0 4-2 8-2s4 2 8 2v-2c-4 0-4-2-8-2-1.26 0-2.01.3-2.87.5C14.91 11.2 17.35 9.2 21 9V7c-1.5 0-2.89.28-4 .72V8z"/></svg></div>
         <div>
-          <div class="accred-name">Carbon Pricing Leadership Coalition</div>
-          <p class="accred-desc">Member of the CPLC Singapore, the decarbonisation arm of the Global Compact Network Singapore, advancing sustainable business practices.</p>
+          <div class="accred-name">Carbon Pricing Leadership</div>
+          <p class="accred-desc">Member of CPLC Singapore — the decarbonisation arm of the Global Compact Network Singapore.</p>
         </div>
       </div>
 
       <div class="accred-card">
-        <div class="accred-icon">
-          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-        </div>
+        <div class="accred-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
         <div>
-          <div class="accred-name">EcoVadis Bronze Sustainability</div>
-          <p class="accred-desc">Awarded Bronze sustainability rating by the world's most trusted provider of business sustainability ratings.</p>
+          <div class="accred-name">EcoVadis Bronze</div>
+          <p class="accred-desc">World's most trusted sustainability rating — Bronze awarded, with continued improvement targets.</p>
         </div>
       </div>
 
@@ -1894,49 +1932,43 @@
   </div>
 </section>
 
-<!-- ─── Contact ───────────────────────────────────────────── -->
-<section id="contact">
+<!-- ═══ CONTACT ═══════════════════════════════════════════════════ -->
+<section id="contact" class="section">
   <div class="container">
-    <div class="contact-inner">
-      <div class="contact-info">
-        <div class="section-label">Get In Touch</div>
-        <h2 class="section-title">Ready to Build Your<br/>Aviation Team?</h2>
-        <p class="section-body">
-          Engage with our services today and experience aviation workforce excellence firsthand. Reach out to Jerry to discuss your specific needs.
-        </p>
+    <div style="text-align:center;margin-bottom:60px;">
+      <div class="label" style="justify-content:center;">Engage</div>
+      <h2 class="heading" style="text-align:center;">INITIATE <span class="hi">ENGAGEMENT</span></h2>
+      <p class="body-text" style="text-align:center;margin:0 auto;">Ready to build your aviation team? Reach out to Jerry and our team to discuss your specific requirements.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
         <div class="contact-details">
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
             <div>
-              <div class="contact-detail-label">Telephone</div>
-              <div class="contact-detail-value">+65 8353 5815</div>
+              <div class="contact-item-lbl">Telephone</div>
+              <div class="contact-item-val">+65 8353 5815</div>
             </div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
             <div>
-              <div class="contact-detail-label">Address</div>
-              <div class="contact-detail-value">2 Kallang Avenue, CT Hub<br/>#03–08, Singapore 339407</div>
+              <div class="contact-item-lbl">Address</div>
+              <div class="contact-item-val">2 Kallang Avenue, CT Hub<br/>#03–08 Singapore 339407</div>
             </div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
             <div>
-              <div class="contact-detail-label">Website</div>
-              <div class="contact-detail-value">elitez.asia/elitezaviation</div>
+              <div class="contact-item-lbl">Website</div>
+              <div class="contact-item-val">elitez.asia/elitezaviation</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="contact-form-wrap">
-        <div class="form-title">Send Us a Message</div>
+      <div class="form-panel glass" style="clip-path:none;">
+        <div class="form-title">// SEND TRANSMISSION</div>
         <form onsubmit="handleSubmit(event)">
           <div class="form-row">
             <div class="form-group">
@@ -1950,102 +1982,193 @@
           </div>
           <div class="form-group">
             <label class="form-label">Company</label>
-            <input type="text" class="form-input" placeholder="Your Company Name" />
+            <input type="text" class="form-input" placeholder="Airline / MRO Company" />
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
             <input type="email" class="form-input" placeholder="john@company.com" required />
           </div>
           <div class="form-group">
-            <label class="form-label">Enquiry Type</label>
+            <label class="form-label">Service Required</label>
             <select class="form-select form-input">
-              <option value="">Select a service...</option>
+              <option value="">Select mission type...</option>
               <option>Aviation Recruitment</option>
               <option>Key Accounts Recruitment</option>
               <option>HRM Services</option>
               <option>AOG Manpower Contract</option>
-              <option>Other</option>
+              <option>General Enquiry</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Tell us about your hiring needs..."></textarea>
+            <textarea class="form-textarea" placeholder="Describe your workforce requirements..."></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Enquiry →</button>
+          <button type="submit" class="form-submit">TRANSMIT →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── Footer ───────────────────────────────────────────── -->
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="nav-logo">
-          <div class="nav-logo-top">ELIT<span class="slash">✈</span>EZ</div>
-          <div class="nav-logo-sub">Aviation</div>
-        </div>
+    <div class="footer-top">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">ELIT<span class="slash">✈</span>EZ</div>
+        <div class="nav-logo-sub">Aviation</div>
       </div>
       <ul class="footer-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#flow">Our Process</a></li>
+        <li><a href="#flow">Process</a></li>
         <li><a href="#why">Why Us</a></li>
-        <li><a href="#accreditation">Accreditations</a></li>
+        <li><a href="#accreditation">Credentials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-    <div class="footer-copy">
-      <div class="footer-copy-text">© 2025 Elitez Aviation Pte Ltd. All rights reserved.</div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 ELITEZ AVIATION PTE LTD // ALL RIGHTS RESERVED</div>
       <div class="footer-parent">A member of <a href="#">Elitez Group of Companies</a></div>
     </div>
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════════
+   JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
 <script>
-  function toggleNav() {
-    const nav = document.getElementById('mobile-nav');
-    nav.style.display = nav.style.display === 'none' ? 'block' : 'none';
+/* ── Starfield Canvas ───────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Message Sent!';
-    btn.style.background = '#16a34a';
-    setTimeout(() => {
-      btn.textContent = 'Send Enquiry →';
-      btn.style.background = '';
-      e.target.reset();
-    }, 3000);
+  function initStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 6000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.2,
+        a: Math.random(),
+        da: (Math.random() * 0.005 + 0.001) * (Math.random() < .5 ? 1 : -1),
+        speed: Math.random() * 0.1 + 0.02,
+        color: Math.random() < .3 ? '#00d4ff' : '#ffffff'
+      });
+    }
   }
 
-  // Smooth scroll for all anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const s of stars) {
+      s.a += s.da;
+      if (s.a > 1 || s.a < 0) s.da *= -1;
+      s.y -= s.speed;
+      if (s.y < 0) { s.y = H; s.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = s.a * 0.7;
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
 
-  // Nav highlight on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current
-        ? '#fff' : '';
-    });
+  window.addEventListener('resize', () => { resize(); initStars(); });
+  resize();
+  initStars();
+  draw();
+})();
+
+/* ── Counter animation ──────────────────────────────────── */
+function animateCounter(el, target, duration) {
+  const start = performance.now();
+  const update = (time) => {
+    const progress = Math.min((time - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = Math.floor(eased * target);
+    el.textContent = val.toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString();
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      animateCounter(el, target, 1800);
+      counterObserver.unobserve(el);
+    }
   });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+/* ── Stat block counters ────────────────────────────────── */
+const statNums = document.querySelectorAll('#stats .stat-num[data-count]');
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count);
+      const unit = el.querySelector('.unit');
+      const origText = unit ? unit.textContent : '';
+      if (unit) unit.textContent = '0';
+      animateCounter(unit || el, target, 1800);
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+statNums.forEach(el => statObserver.observe(el));
+
+/* ── Mobile nav ─────────────────────────────────────────── */
+function toggleNav() {
+  const n = document.getElementById('mobile-nav');
+  n.style.display = n.style.display === 'none' ? 'block' : 'none';
+}
+
+/* ── Form ───────────────────────────────────────────────── */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = 'TRANSMISSION SENT ✓';
+  btn.style.background = '#00ff88';
+  setTimeout(() => {
+    btn.textContent = 'TRANSMIT →';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+/* ── Smooth scroll ──────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── Active nav link ────────────────────────────────────── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let curr = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) curr = s.id; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + curr ? 'var(--cyan)' : '';
+  });
+}, { passive: true });
 </script>
 </body>
 </html>
