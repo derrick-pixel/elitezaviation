@@ -864,14 +864,17 @@ nav::after {
 ═══════════════════════════════════════════════════════════ */
 #expertise { background: var(--bg2); }
 .expertise-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
+.expertise-split .body-text { text-align: center; }
 .roles-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-top: 32px;
 }
@@ -891,52 +894,7 @@ nav::after {
 }
 .role-chip::before { content: '◈'; color: var(--cyan); font-size: 10px; flex-shrink: 0; }
 .role-chip:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,212,255,.06); box-shadow: inset 0 0 20px rgba(0,212,255,.04); }
-.expertise-table-wrap {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-.expertise-table-wrap::before {
-  content: 'HR SERVICES MATRIX';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  background: rgba(0,212,255,.08);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 20px;
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 3px;
-  color: var(--cyan);
-}
-.exp-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 45px;
-}
-.exp-table th {
-  background: rgba(0,212,255,.08);
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--cyan);
-  padding: 12px 16px;
-  text-align: left;
-  border-right: 1px solid var(--border2);
-}
-.exp-table th:last-child { border-right: none; }
-.exp-table td {
-  padding: 11px 16px;
-  font-size: 12px;
-  color: var(--text2);
-  border-bottom: 1px solid var(--border2);
-  border-right: 1px solid var(--border2);
-  transition: color .2s, background .2s;
-}
-.exp-table td:last-child { border-right: none; }
-.exp-table tr:last-child td { border-bottom: none; }
-.exp-table tr:hover td { background: rgba(0,212,255,.04); color: #e2f4ff; }
+/* HR Services Matrix removed */
 
 /* ═══════════════════════════════════════════════════════════
    FLOW
@@ -1042,64 +1000,7 @@ nav::after {
 .why-title { font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700; color: #e2f4ff; margin-bottom: 12px; letter-spacing: .5px; }
 .why-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
 
-/* ═══════════════════════════════════════════════════════════
-   ALSS CALLOUT
-═══════════════════════════════════════════════════════════ */
-#alss {
-  background: var(--bg);
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-}
-.alss-wrap {
-  border-top: 1px solid var(--border2);
-  border-bottom: 1px solid var(--border2);
-  background: linear-gradient(135deg, rgba(0,85,255,.05), rgba(0,212,255,.03));
-  padding: 80px 0;
-  position: relative;
-}
-.alss-wrap::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px; height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,255,.04) 0%, transparent 60%);
-  pointer-events: none;
-}
-.alss-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-  position: relative;
-}
-.alss-data {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: var(--border2);
-}
-.alss-row {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  background: var(--bg);
-  padding: 24px 28px;
-  transition: background .2s;
-}
-.alss-row:hover { background: rgba(0,212,255,.04); }
-.alss-row-icon {
-  width: 44px; height: 44px;
-  border: 1px solid var(--border);
-  background: rgba(0,212,255,.05);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.alss-row-icon svg { width: 22px; height: 22px; fill: var(--cyan); }
-.alss-row-val { font-family: 'Orbitron', monospace; font-size: 20px; font-weight: 800; color: var(--cyan); text-shadow: 0 0 16px rgba(0,212,255,.4); }
-.alss-row-label { font-size: 12px; color: var(--text2); margin-top: 2px; }
+/* ALSS section removed */
 
 /* ═══════════════════════════════════════════════════════════
    REGIONAL
@@ -1815,7 +1716,7 @@ footer {
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .about-grid, .expertise-split, .alss-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid, .alss-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .hero-radar { display: none; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1831,7 +1732,7 @@ footer {
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .regional-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
-  .roles-grid { grid-template-columns: 1fr; }
+  .roles-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-hud { flex-direction: column; }
   .hud-stat { border-right: none; border-bottom: 1px solid var(--border2); }
   .hud-stat:last-child { border-bottom: none; }
@@ -2324,11 +2225,6 @@ footer {
       <div class="stat-label">Aviation Network</div>
       <div class="stat-sub">Technical Professionals</div>
     </div>
-    <div class="stat-block">
-      <div class="stat-num">#<span class="unit">11</span></div>
-      <div class="stat-label">ALSS Approved</div>
-      <div class="stat-sub">Fewer than 20 in Singapore</div>
-    </div>
   </div>
 </section>
 
@@ -2413,23 +2309,6 @@ footer {
           <div class="role-chip" data-role="painter">Aircraft Painter</div>
           <div class="role-chip" data-role="welder">Aerospace Welder</div>
         </div>
-      </div>
-      <div class="expertise-table-wrap">
-        <table class="exp-table">
-          <thead>
-            <tr>
-              <th>Aviation Rec.</th>
-              <th>Key Accounts</th>
-              <th>HRM</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Aircraft Technician</td><td>Executive Search</td><td>Parked Payroll</td></tr>
-            <tr><td>NDT Inspector</td><td>Confidential Search</td><td>Payroll Outsourcing</td></tr>
-            <tr><td>CNC Machinist</td><td>Regional Hiring</td><td>HR Consultancy</td></tr>
-            <tr><td>General Worker</td><td>Mass Recruitment</td><td>Work Pass Mgmt</td></tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
@@ -2728,48 +2607,7 @@ footer {
   </div>
 </section>
 
-<!-- ═══ ALSS ═══════════════════════════════════════════════════ -->
-<section id="alss">
-  <div class="alss-wrap">
-    <div class="container">
-      <div class="alss-inner">
-        <div>
-          <div class="label">Certification</div>
-          <h2 class="heading">AEROSPACE LABOUR<br/><span class="hi">SUPPLY SCHEME</span></h2>
-          <p class="body-text" style="margin-bottom:24px;">
-            Elitez Aviation Pte Ltd has achieved a landmark milestone — officially admitted into Singapore's Aerospace Labour Supply Scheme (ALSS) under the Ministry of Manpower.
-          </p>
-          <p class="body-text">
-            Held by fewer than 20 firms in Singapore, this accreditation reflects our commitment to the highest standards of aerospace workforce provision. Endorsed by GASCA and Fokker before we even obtained the licence, our track record speaks first.
-          </p>
-        </div>
-        <div class="alss-data">
-          <div class="alss-row">
-            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-            <div>
-              <div class="alss-row-val">&lt;20 Firms</div>
-              <div class="alss-row-label">Fewer than 20 ALSS-approved suppliers in Singapore</div>
-            </div>
-          </div>
-          <div class="alss-row">
-            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
-            <div>
-              <div class="alss-row-val">15 Jul 2024</div>
-              <div class="alss-row-label">MOM ALSS approval date</div>
-            </div>
-          </div>
-          <div class="alss-row">
-            <div class="alss-row-icon"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.54 1 13.18 1c-1.15 0-2.17.37-2.93 1.14L9 3.37 7.75 2.14C6.99 1.37 5.97 1 4.82 1 2.46 1 0 2.54 0 4.67c0 .45.11.89.18 1.33H0v2h20v-2z"/></svg></div>
-            <div>
-              <div class="alss-row-val">GASCA · Fokker</div>
-              <div class="alss-row-label">Industry leaders who endorsed us pre-certification</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ALSS section removed -->
 
 <!-- ═══ REGIONAL ════════════════════════════════════════════════ -->
 <section id="regional" class="section">
@@ -2992,10 +2830,10 @@ footer {
       <div>
         <div class="contact-details">
           <div class="contact-item">
-            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
             <div>
-              <div class="contact-item-lbl">Telephone</div>
-              <div class="contact-item-val">+65 8353 5815</div>
+              <div class="contact-item-lbl">Email Inquiry</div>
+              <div class="contact-item-val">aviation@elitez.asia</div>
             </div>
           </div>
           <div class="contact-item">
