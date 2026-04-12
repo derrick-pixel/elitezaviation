@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Elitez Aviation | Aviation HR Solutions</title>
   <meta name="description" content="Elitez Aviation — Singapore's frontier aviation workforce partner. Precision-engineered HR solutions for airlines and MROs." />
 
@@ -1000,7 +1003,6 @@ nav::after {
 .why-title { font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700; color: #e2f4ff; margin-bottom: 12px; letter-spacing: .5px; }
 .why-desc { font-size: 13px; color: var(--text2); line-height: 1.7; }
 
-/* ALSS section removed */
 
 /* ═══════════════════════════════════════════════════════════
    REGIONAL
@@ -1689,7 +1691,7 @@ footer {
    RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .about-grid, .alss-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .hero-radar { display: none; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1980,24 +1982,20 @@ footer {
   <div class="ticker-wrap">
     <div class="ticker">
       <!-- duplicated for seamless loop -->
-      <div class="ticker-item"><span class="ticker-dot"></span> ALSS Approved · Ministry of Manpower</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Endorsed by GASCA &amp; Fokker</div>
       <div class="ticker-item"><span class="ticker-dot"></span> ISO 9001:2015 Certified</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Human Capital Partnership · MOM</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Data Protection Trustmark · DPTM</div>
       <div class="ticker-item"><span class="ticker-dot"></span> SG Cyber Safe · Cyber Essentials</div>
       <div class="ticker-item"><span class="ticker-dot"></span> EcoVadis Bronze · Sustainability</div>
-      <div class="ticker-item"><span class="ticker-dot"></span> One of &lt;20 ALSS Firms in Singapore</div>
       <div class="ticker-item"><span class="ticker-dot"></span> First CV Delivered Within 1 Week</div>
       <!-- duplicate -->
-      <div class="ticker-item"><span class="ticker-dot"></span> ALSS Approved · Ministry of Manpower</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Endorsed by GASCA &amp; Fokker</div>
       <div class="ticker-item"><span class="ticker-dot"></span> ISO 9001:2015 Certified</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Human Capital Partnership · MOM</div>
       <div class="ticker-item"><span class="ticker-dot"></span> Data Protection Trustmark · DPTM</div>
       <div class="ticker-item"><span class="ticker-dot"></span> SG Cyber Safe · Cyber Essentials</div>
       <div class="ticker-item"><span class="ticker-dot"></span> EcoVadis Bronze · Sustainability</div>
-      <div class="ticker-item"><span class="ticker-dot"></span> One of &lt;20 ALSS Firms in Singapore</div>
       <div class="ticker-item"><span class="ticker-dot"></span> First CV Delivered Within 1 Week</div>
     </div>
   </div>
@@ -2123,7 +2121,7 @@ footer {
           <div class="about-badge">LIVE DATA</div>
           <div class="about-panel-label">// System Intelligence</div>
           <div class="about-panel-stat">
-            <span class="about-panel-stat-label">ALSS Certification</span>
+            <span class="about-panel-stat-label">ISO Certification</span>
             <span class="about-panel-stat-val">ACTIVE</span>
           </div>
           <div class="about-panel-stat">
@@ -2162,8 +2160,8 @@ footer {
           <li>
             <div class="about-list-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
             <div>
-              <strong>ALSS Certified — Top 11 in Singapore</strong>
-              <span>Officially admitted to the Aerospace Labour Supply Scheme under the Ministry of Manpower.</span>
+              <strong>ISO 9001:2015 Certified</strong>
+              <span>Quality management systems certified to international standards, ensuring consistent service delivery.</span>
             </div>
           </li>
           <li>
@@ -2526,7 +2524,6 @@ footer {
   </div>
 </section>
 
-<!-- ALSS section removed -->
 
 <!-- ═══ REGIONAL ════════════════════════════════════════════════ -->
 <section id="regional" class="section">
