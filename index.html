@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Elitez Aviation | Aviation HR Solutions</title>
@@ -2711,28 +2711,32 @@ footer {
 
       <div class="form-panel glass" style="clip-path:none;">
         <div class="form-title">// SEND TRANSMISSION</div>
-        <form onsubmit="handleSubmit(event)">
+        <form id="contact-form" action="https://formsubmit.co/aviation@elitez.asia" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="New Inquiry — Elitez Aviation Contact Form" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">First Name</label>
-              <input type="text" class="form-input" placeholder="John" required />
+              <input type="text" name="first_name" class="form-input" placeholder="John" required />
             </div>
             <div class="form-group">
               <label class="form-label">Last Name</label>
-              <input type="text" class="form-input" placeholder="Smith" required />
+              <input type="text" name="last_name" class="form-input" placeholder="Smith" required />
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Company</label>
-            <input type="text" class="form-input" placeholder="Airline / MRO Company" />
+            <input type="text" name="company" class="form-input" placeholder="Airline / MRO Company" />
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="john@company.com" required />
+            <input type="email" name="email" class="form-input" placeholder="john@company.com" required />
           </div>
           <div class="form-group">
             <label class="form-label">Service Required</label>
-            <select class="form-select form-input">
+            <select name="service" class="form-select form-input">
               <option value="">Select mission type...</option>
               <option>Aviation Recruitment</option>
               <option>Key Accounts Recruitment</option>
@@ -2743,7 +2747,7 @@ footer {
           </div>
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Describe your workforce requirements..."></textarea>
+            <textarea name="message" class="form-textarea" placeholder="Describe your workforce requirements..."></textarea>
           </div>
           <button type="submit" class="form-submit">TRANSMIT →</button>
         </form>
@@ -2881,16 +2885,32 @@ function toggleNav() {
 }
 
 /* ── Form ───────────────────────────────────────────────── */
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
-  btn.textContent = 'TRANSMISSION SENT ✓';
-  btn.style.background = '#00ff88';
-  setTimeout(() => {
-    btn.textContent = 'TRANSMIT →';
-    btn.style.background = '';
-    e.target.reset();
-  }, 3000);
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  btn.textContent = 'TRANSMITTING...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/aviation@elitez.asia', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    });
+    if (!res.ok) throw new Error('send failed');
+    btn.textContent = 'TRANSMISSION SENT ✓';
+    btn.style.background = '#00ff88';
+    form.reset();
+  } catch (err) {
+    btn.textContent = 'TRANSMISSION FAILED — RETRY';
+    btn.style.background = '#ff4466';
+  } finally {
+    setTimeout(() => {
+      btn.textContent = 'TRANSMIT →';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
 }
 
 /* ── Smooth scroll ──────────────────────────────────────── */
